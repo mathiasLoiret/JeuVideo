@@ -10,6 +10,7 @@ public class chickenMove : MonoBehaviour {
     private Rigidbody2D rb;
 
     public float maxHorizontalSpeed;
+    public float jumpInitialSpeed;
 
     // Use this for initialization
     void Start ()
@@ -35,6 +36,6 @@ public class chickenMove : MonoBehaviour {
 
     internal void jump()
     {
-        rb.velocity = new Vector2(0, 5);
+        rb.velocity = new Vector2(0, jumpInitialSpeed);
     }
 }
