@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class animationCourse : MonoBehaviour
 {
@@ -12,13 +11,8 @@ public class animationCourse : MonoBehaviour
     public Sprite[] roulade_sprites;
 
     public float minFps = 10;
-    private float realFps = 0;
-    public Text txt;
 
     private SpriteRenderer sr;
-    private Transform tr;
-    private Vector2 init_offset;
-    private Vector2 init_size;
 
     private float deltaTime = 0.0f;
     private string defaultAction = "wait";
@@ -26,8 +20,6 @@ public class animationCourse : MonoBehaviour
     private string currentAction = "wait";
     private string nextAction = "wait";
     private string[] notPrioritareAction = { "wait", "run" };
-
-    private float y;
 
     private int curentIndex;
 
@@ -48,7 +40,6 @@ public class animationCourse : MonoBehaviour
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
-        tr = GetComponent<Transform>();
         current_sprite = wait_sprites; // cause default
         curentIndex = 0;
 
@@ -58,8 +49,6 @@ public class animationCourse : MonoBehaviour
     void Update()
     {
         //if (sprites.Length == 0) return;
-
-
 
         if (Input.GetKey(KeyCode.Space))
         {
@@ -96,10 +85,6 @@ public class animationCourse : MonoBehaviour
         deltaTime += Time.deltaTime;
         if (deltaTime > 1 / minFps)
         {
-            // Update fps
-            realFps = 1 / Time.deltaTime;
-            txt.text = "FPS : " + System.Math.Round(realFps);
-
 
             // si on est sur l'action de base on attend pas pour changer d'action
             if (IsInArray(notPrioritareAction, currentAction) && nextAction != defaultAction)
