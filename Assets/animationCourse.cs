@@ -69,17 +69,26 @@ public class animationCourse : MonoBehaviour
         //bc.offset = init_offset;
         //bc.size = init_size;
 
-        if (Input.GetKey(KeyCode.Space) && currentAction != "space")
+        if (Input.GetKey(KeyCode.Space))
         {
-            nextAction = "space";
+            if(currentAction != "space" || current_sprite.Length-1 == curentIndex)
+            {
+                nextAction = "space";
+            }
         }
         else if (Input.GetKey(KeyCode.RightArrow) && currentAction != "run")
         {
-            nextAction = "run";
+            if (currentAction != "run" || current_sprite.Length - 1 == curentIndex)
+            {
+                nextAction = "run";
+            }
         }
-        else if (Input.GetKey(KeyCode.DownArrow) && currentAction != "down")
+        else if (Input.GetKey(KeyCode.DownArrow))
         {
-            nextAction = "down";
+            if (currentAction != "down" || current_sprite.Length - 1 == curentIndex)
+            {
+                nextAction = "down";
+            }
             //bc.offset = new Vector2(0.36f, -1.31f);
             //bc.size = new Vector2(4.41f, 3.33f);
 
