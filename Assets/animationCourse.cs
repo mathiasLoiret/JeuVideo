@@ -30,7 +30,7 @@ public class animationCourse : MonoBehaviour
     private string[] notPrioritareAction = { "wait", "run" };
 
     private float y;
-    public float horizontalSpeed;
+    public float maxHorizontalSpeed;
 
     private int curentIndex;
 
@@ -70,8 +70,13 @@ public class animationCourse : MonoBehaviour
         txt.text = "FPS : " + System.Math.Round(realFps);
 
         // Update move
+        tr.position += new Vector3(Input.GetAxis("Horizontal") * maxHorizontalSpeed * Time.deltaTime, 0, 0);
 
-        tr.position += new Vector3(Input.GetAxis("Horizontal") * horizontalSpeed, 0, 0);
+        if (Input.GetAxis("Horizontal") < 0)
+            sr.flipX = true;
+        else if(Input.GetAxis("Horizontal") > 0)
+            sr.flipX = false;
+
 
 
         // Update frame
@@ -86,14 +91,21 @@ public class animationCourse : MonoBehaviour
                 nextAction = "space";
             }
         }
-        else if (Input.GetKey(KeyCode.RightArrow) && currentAction != "run")
+        else if (Input.GetAxis("Horizontal")>0 && currentAction != "run")
         {
             if (currentAction != "run" || current_sprite.Length - 1 == curentIndex)
             {
                 nextAction = "run";
             }
         }
-        else if (Input.GetKey(KeyCode.DownArrow))
+        else if (Input.GetAxis("Horizontal") <0 && currentAction != "run")
+        {
+            if (currentAction != "run" || current_sprite.Length - 1 == curentIndex)
+            {
+                nextAction = "run";
+            }
+        }
+        else if (Input.GetAxis("Vertical") < 0)
         {
             if (currentAction != "down" || current_sprite.Length - 1 == curentIndex)
             {
