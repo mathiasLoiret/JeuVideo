@@ -16,7 +16,6 @@ public class staticDisplay : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        // Update fps
         realFps = 1 / Time.deltaTime;
         txt.text = "FPS : " + System.Math.Round(realFps);
     }

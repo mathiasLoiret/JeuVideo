@@ -50,47 +50,39 @@ public class animationCourse : MonoBehaviour
     {
         //if (sprites.Length == 0) return;
 
+        // Dection d'appui sur touche
         if (Input.GetKey(KeyCode.Space))
         {
             if(currentAction != "space" || current_sprite.Length-1 == curentIndex)
-            {
                 nextAction = "space";
-            }
         }
         else if (Input.GetAxis("Horizontal")>0 && currentAction != "run")
         {
             if (currentAction != "run" || current_sprite.Length - 1 == curentIndex)
-            {
                 nextAction = "run";
-            }
         }
         else if (Input.GetAxis("Horizontal") <0 && currentAction != "run")
         {
             if (currentAction != "run" || current_sprite.Length - 1 == curentIndex)
-            {
                 nextAction = "run";
-            }
         }
         else if (Input.GetAxis("Vertical") < 0)
         {
             if (currentAction != "down" || current_sprite.Length - 1 == curentIndex)
-            {
                 nextAction = "down";
-            }
 
         }
 
 
-        // set refresh
+        // delayed refresh
         deltaTime += Time.deltaTime;
         if (deltaTime > 1 / minFps)
         {
 
-            // si on est sur l'action de base on attend pas pour changer d'action
+            // si on est sur un action interompable on attend pas pour changer d'action
             if (IsInArray(notPrioritareAction, currentAction) && nextAction != defaultAction)
-            {
                 curentIndex = -1;
-            }
+
 
             // si une serie d'image est fini, on passe à la suivante et on met a jour la serie d'image à afficher.
             curentIndex = (curentIndex + 1) % current_sprite.Length;
