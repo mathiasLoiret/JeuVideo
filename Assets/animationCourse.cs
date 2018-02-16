@@ -30,6 +30,7 @@ public class animationCourse : MonoBehaviour
     private string[] notPrioritareAction = { "wait", "run" };
 
     private float y;
+    public float horizontalSpeed;
 
     private int curentIndex;
 
@@ -63,8 +64,17 @@ public class animationCourse : MonoBehaviour
     void Update()
     {
         //if (sprites.Length == 0) return;
+
+        // Update fps
         realFps = 1 / Time.deltaTime;
         txt.text = "FPS : " + System.Math.Round(realFps);
+
+        // Update move
+
+        tr.position += new Vector3(Input.GetAxis("Horizontal") * horizontalSpeed, 0, 0);
+
+
+        // Update frame
 
         //bc.offset = init_offset;
         //bc.size = init_size;
