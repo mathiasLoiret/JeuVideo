@@ -38,16 +38,24 @@ public class chickenMove : MonoBehaviour {
             sr.flipX = true;
         else if (Input.GetAxis("Horizontal") > 0)
             sr.flipX = false;
-
-        // Update Jump
-        if (false)
-            jumpsCounter = 0;
+            
     }
 
-    internal void jump()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        jumpsCounter++;
+        // Update Jump
+        jumpsCounter = 0;
         GetComponent<staticDisplay>().updateJumpCounter(jumpsCounter, 3);
-        rb.velocity = new Vector2(0, jumpInitialSpeed);
+    }
+
+    internal void jump(int maxConsecutivJumps)
+    {
+        if(jumpsCounter < maxConsecutivJumps)
+        {
+            jumpsCounter++;
+            GetComponent<staticDisplay>().updateJumpCounter(jumpsCounter, maxConsecutivJumps);
+            rb.velocity = new Vector2(0, jumpInitialSpeed);
+        }
+        
     }
 }

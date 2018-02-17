@@ -975,6 +975,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cibleTr: {fileID: 1950643805}
+  percentToGoByFrame: 0.02
+  finalPrecision: 0.5
 --- !u!114 &1401999830
 MonoBehaviour:
   m_ObjectHideFlags: 0
