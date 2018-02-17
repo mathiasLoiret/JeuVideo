@@ -13,6 +13,8 @@ public class chickenMove : MonoBehaviour {
     public float maxHorizontalSpeed;
     public float jumpInitialSpeed;
 
+    public int maxConsecutivJumps;
+
     private int jumpsCounter;
 
     // Use this for initialization
@@ -45,16 +47,21 @@ public class chickenMove : MonoBehaviour {
     {
         // Update Jump
         jumpsCounter = 0;
-        GetComponent<staticDisplay>().updateJumpCounter(jumpsCounter, 3);
+        GetComponent<staticDisplay>().updateJumpCounter(jumpsCounter, maxConsecutivJumps);
     }
 
-    internal void jump(int maxConsecutivJumps)
+    internal int jump()
     {
         if(jumpsCounter < maxConsecutivJumps)
         {
             jumpsCounter++;
             GetComponent<staticDisplay>().updateJumpCounter(jumpsCounter, maxConsecutivJumps);
             rb.velocity = new Vector2(0, jumpInitialSpeed);
+            return jumpsCounter;
+        }
+        else
+        {
+            return -1;
         }
         
     }

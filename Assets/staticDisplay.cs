@@ -19,7 +19,7 @@ public class staticDisplay : MonoBehaviour {
 	void Update () {
 
         realFps = 1 / Time.deltaTime;
-        fps.text = "FPS : " + System.Math.Round(realFps);
+        fps.text = "FPS : " + Math.Round(realFps);
     }
 
     internal void updateJumpCounter(int nbJumps, int maxfollowedJump)

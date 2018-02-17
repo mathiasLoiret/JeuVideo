@@ -94,7 +94,11 @@ public class animationCourse : MonoBehaviour
                 if (currentAction == "space")
                 {
                     current_sprite = jump_sprites;
-                    GetComponent<chickenMove>().jump(3);
+                    if (GetComponent<chickenMove>().jump() < 0)
+                    {
+                        currentAction = "down";
+                        current_sprite = roulade_sprites;
+                    } 
                 }
                 else if (currentAction == "run")
                 {

@@ -1686,6 +1686,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHorizontalSpeed: 8
   jumpInitialSpeed: 10
+  maxConsecutivJumps: 3
 --- !u!114 &1950643809
 MonoBehaviour:
   m_ObjectHideFlags: 0
