@@ -40,7 +40,11 @@ public class chickenMove : MonoBehaviour {
             sr.flipX = true;
         else if (Input.GetAxis("Horizontal") > 0)
             sr.flipX = false;
-            
+
+        // detection de chute
+        if(tr.position.y < -10)
+            GetComponent<staticDisplay>().updateFinal("YOU LOSE !!!");
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
