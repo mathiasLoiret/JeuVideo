@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,7 +7,8 @@ using UnityEngine.UI;
 public class staticDisplay : MonoBehaviour {
 
     private float realFps = 0;
-    public Text txt;
+    public Text fps;
+    public Text jumpCounter;
 
     // Use this for initialization
     void Start () {
@@ -17,6 +19,11 @@ public class staticDisplay : MonoBehaviour {
 	void Update () {
 
         realFps = 1 / Time.deltaTime;
-        txt.text = "FPS : " + System.Math.Round(realFps);
+        fps.text = "FPS : " + System.Math.Round(realFps);
+    }
+
+    internal void updateJumpCounter(int nbJumps, int maxfollowedJump)
+    {
+        jumpCounter.text = "Jumps : " + nbJumps + " /" +  maxfollowedJump;
     }
 }
