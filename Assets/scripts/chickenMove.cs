@@ -16,6 +16,8 @@ public class chickenMove : MonoBehaviour {
     public int maxConsecutivJumps;
     public int maxCollectableJumps;
 
+    public Transform lifeBarTr;
+
     private int jumpsCounter;
     private int collectableCounter;
 
@@ -58,6 +60,8 @@ public class chickenMove : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D other)
     {
         // Update Jump
+        lifeBarTr.GetComponent<lifeBarScript>().resetLifeBar(3f, 3f);
+
         jumpsCounter = 0;
         GetComponent<staticDisplay>().updateJumpCounter(jumpsCounter, maxConsecutivJumps);
 
@@ -65,7 +69,7 @@ public class chickenMove : MonoBehaviour {
         {
             collectableCounter++;
             GetComponent<staticDisplay>().updateCollectableCounter(collectableCounter, maxCollectableJumps);
-            Destroy(other.gameObject); 
+            Destroy(other.gameObject);
         }
         
 
@@ -74,8 +78,12 @@ public class chickenMove : MonoBehaviour {
 
     internal int jump()
     {
-        if(jumpsCounter < maxConsecutivJumps)
+        // lifeBarUdate
+        lifeBarTr.GetComponent<lifeBarScript>().addLP(-1.0f);
+
+        if (jumpsCounter < maxConsecutivJumps)
         {
+            // Update counter;
             jumpsCounter++;
             GetComponent<staticDisplay>().updateJumpCounter(jumpsCounter, maxConsecutivJumps);
             rb.velocity = new Vector2(0, jumpInitialSpeed);

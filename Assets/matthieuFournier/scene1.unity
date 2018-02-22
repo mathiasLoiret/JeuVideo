@@ -235,9 +235,9 @@ Transform:
   m_GameObject: {fileID: 80230692}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 1, z: 1}
   m_Children:
-  - {fileID: 1272976062}
+  - {fileID: 2034783001}
   m_Father: {fileID: 491406754}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -263,10 +263,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 406890392}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.1, y: 0, z: 0}
+  m_LocalScale: {x: 5.2, y: 1.1, z: 1}
   m_Children:
-  - {fileID: 2034783001}
+  - {fileID: 1272976062}
   m_Father: {fileID: 491406754}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -298,8 +298,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdc91aac7dc115948840dd810703cf27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 0
-  maxHp: 0
+  hp: 25
+  maxHp: 50
+  foreground: {fileID: 80230693}
+  background: {fileID: 406890393}
 --- !u!4 &491406754
 Transform:
   m_ObjectHideFlags: 0
@@ -329,7 +331,7 @@ MonoBehaviour:
   cibleTr: {fileID: 1950643805}
   percentToGoByFrame: 1
   finalPrecision: 0
-  xOffset: 0
+  xOffset: -2.5
   yOffset: 2
 --- !u!1 &682658661
 GameObject:
@@ -1331,7 +1333,7 @@ GameObject:
   - component: {fileID: 1272976062}
   - component: {fileID: 1272976063}
   m_Layer: 0
-  m_Name: lifeLvl
+  m_Name: lifeMax
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1345,9 +1347,9 @@ Transform:
   m_GameObject: {fileID: 1272976061}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.5, y: 0, z: 0}
-  m_LocalScale: {x: 5.2953205, y: 0.8411997, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 80230693}
+  m_Father: {fileID: 406890393}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1272976063
@@ -1810,7 +1812,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cibleTr: {fileID: 1950643805}
-  percentToGoByFrame: 0.02
+  percentToGoByFrame: 0.05
   finalPrecision: 0.5
   xOffset: 0
   yOffset: 0
@@ -2728,6 +2730,7 @@ MonoBehaviour:
   jumpInitialSpeed: 10
   maxConsecutivJumps: 3
   maxCollectableJumps: 10
+  lifeBarTr: {fileID: 491406754}
 --- !u!114 &1950643809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2778,7 +2781,7 @@ GameObject:
   - component: {fileID: 2034783001}
   - component: {fileID: 2034783002}
   m_Layer: 0
-  m_Name: lifeMax
+  m_Name: lifeLvl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2792,9 +2795,9 @@ Transform:
   m_GameObject: {fileID: 2034783000}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.5, y: 0, z: 0}
-  m_LocalScale: {x: 4.8199058, y: 0.43407688, z: 1}
+  m_LocalScale: {x: 1, y: 0.8, z: 1}
   m_Children: []
-  m_Father: {fileID: 406890393}
+  m_Father: {fileID: 80230693}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2034783002
