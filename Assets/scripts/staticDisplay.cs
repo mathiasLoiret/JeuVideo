@@ -14,16 +14,24 @@ public class staticDisplay : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        finalMessage.text = "";
+        try
+        {
+            finalMessage.text = "";
+        }
+        catch (Exception e) { }
 
     }
 	
 	// Update is called once per frame
 	void Update () {
+        try
+        {
+            realFps = 1 / Time.deltaTime;
+            double roundedFps = System.Math.Round(realFps);
+            fps.text = "FPS : " + roundedFps;
 
-        realFps = 1 / Time.deltaTime;
-        double roundedFps = System.Math.Round(realFps);
-        fps.text = "FPS : " + roundedFps;
+        }
+        catch (Exception e) { }
     }
 
     internal void updateFinal(string finalMessageTxt)
@@ -39,5 +47,7 @@ public class staticDisplay : MonoBehaviour {
     internal void updateCollectableCounter(int collectableCounter, int maxCollectableJumps)
     {
         this.collectableCounter.text = "Plumes : " + collectableCounter + " /" + maxCollectableJumps;
+        if (collectableCounter >= maxCollectableJumps)
+            finalMessage.text = "YOU WIN !!";
     }
 }

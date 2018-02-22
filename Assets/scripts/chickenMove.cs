@@ -55,25 +55,31 @@ public class chickenMove : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //doCollectThings(collision.collider);
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        doCollectThings(other);
+
         // Update Jump
         lifeBarTr.GetComponent<lifeBarScript>().resetLifeBar(3f, 3f);
 
         jumpsCounter = 0;
         GetComponent<staticDisplay>().updateJumpCounter(jumpsCounter, maxConsecutivJumps);
-
-        if (other.tag == "collectable_1")
-        {
-            collectableCounter++;
-            GetComponent<staticDisplay>().updateCollectableCounter(collectableCounter, maxCollectableJumps);
-            Destroy(other.gameObject);
-        }
         
 
 
+    }
+
+    private void doCollectThings(Collider2D c)
+    { 
+        if (c.tag == "collectable_1")
+        {
+            collectableCounter++;
+            GetComponent<staticDisplay>().updateCollectableCounter(collectableCounter, maxCollectableJumps);
+            Destroy(c.gameObject);
+        }
     }
 
     internal int jump()
