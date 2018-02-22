@@ -9,6 +9,7 @@ public class staticDisplay : MonoBehaviour {
     private float realFps = 0;
     public Text fps;
     public Text jumpCounter;
+    public Text collectableCounter;
     public Text finalMessage;
 
     // Use this for initialization
@@ -21,7 +22,13 @@ public class staticDisplay : MonoBehaviour {
 	void Update () {
 
         realFps = 1 / Time.deltaTime;
-        fps.text = "FPS : " + Math.Round(realFps);
+        double roundedFps = System.Math.Round(realFps);
+        fps.text = "FPS : " + roundedFps;
+    }
+
+    internal void updateFinal(string finalMessageTxt)
+    {
+        finalMessage.text = finalMessageTxt;
     }
 
     internal void updateJumpCounter(int nbJumps, int maxfollowedJump)
@@ -29,8 +36,8 @@ public class staticDisplay : MonoBehaviour {
         jumpCounter.text = "Jumps : " + nbJumps + " /" +  maxfollowedJump;
     }
 
-    internal void updateFinal(string finalMessageTxt)
+    internal void updateCollectableCounter(int collectableCounter, int maxCollectableJumps)
     {
-        finalMessage.text = finalMessageTxt;
+        this.collectableCounter.text = "Plumes : " + collectableCounter + " /" + maxCollectableJumps;
     }
 }

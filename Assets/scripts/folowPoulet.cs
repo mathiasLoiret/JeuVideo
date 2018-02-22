@@ -8,6 +8,10 @@ public class folowPoulet : MonoBehaviour {
     public float percentToGoByFrame;
     public float finalPrecision;
 
+    public float xOffset;
+    public float yOffset;
+    Vector3 targetPosition;
+
     private Transform tr;
     private Vector3 folowDirection;
 
@@ -25,14 +29,15 @@ public class folowPoulet : MonoBehaviour {
     }
 	
 	// Update is called once per frame    
-	void Update () {
-        if (System.Math.Abs(cibleTr.position.x - tr.position.x) > finalPrecision)
-            folowDirection.x = (cibleTr.position.x - tr.position.x) * percentToGoByFrame;
+	void LateUpdate () {
+        targetPosition = cibleTr.position + new Vector3(xOffset, yOffset, 0);
+        if (System.Math.Abs(targetPosition.x - tr.position.x) > finalPrecision)
+            folowDirection.x = (targetPosition.x - tr.position.x) * percentToGoByFrame;
         else
             folowDirection.x = 0;
 
-        if (System.Math.Abs(cibleTr.position.y - tr.position.y) > finalPrecision)
-            folowDirection.y = (cibleTr.position.y - tr.position.y) * percentToGoByFrame;
+        if (System.Math.Abs(targetPosition.y - tr.position.y) > finalPrecision)
+            folowDirection.y = (targetPosition.y - tr.position.y) * percentToGoByFrame;
         else
             folowDirection.y = 0;
 

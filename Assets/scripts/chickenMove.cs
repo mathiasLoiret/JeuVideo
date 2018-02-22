@@ -14,8 +14,11 @@ public class chickenMove : MonoBehaviour {
     public float jumpInitialSpeed;
 
     public int maxConsecutivJumps;
+    public int maxCollectableJumps;
 
     private int jumpsCounter;
+    private int collectableCounter;
+
 
     // Use this for initialization
     void Start ()
@@ -26,6 +29,7 @@ public class chickenMove : MonoBehaviour {
         bc = GetComponent<BoxCollider2D>();
 
         jumpsCounter = 0;
+        collectableCounter = 0;
 
     }
 	
@@ -56,6 +60,16 @@ public class chickenMove : MonoBehaviour {
         // Update Jump
         jumpsCounter = 0;
         GetComponent<staticDisplay>().updateJumpCounter(jumpsCounter, maxConsecutivJumps);
+
+        if (other.tag == "collectable_1")
+        {
+            collectableCounter++;
+            GetComponent<staticDisplay>().updateCollectableCounter(collectableCounter, maxCollectableJumps);
+            Destroy(other.gameObject); 
+        }
+        
+
+
     }
 
     internal int jump()
