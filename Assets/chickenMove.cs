@@ -42,12 +42,16 @@ public class chickenMove : MonoBehaviour {
             sr.flipX = false;
 
         // detection de chute
-        if(tr.position.y < -10)
+        if(tr.position.y < -30)
             GetComponent<staticDisplay>().updateFinal("YOU LOSE !!!");
 
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
+    {
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
     {
         // Update Jump
         jumpsCounter = 0;
