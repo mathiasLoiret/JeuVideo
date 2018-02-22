@@ -16,7 +16,8 @@ public class chickenMove : MonoBehaviour {
     public int maxConsecutivJumps;
     public int maxCollectableJumps;
 
-    public Transform lifeBarTr;
+    public Transform manaBar;
+    public Transform progressBar;
 
     private int jumpsCounter;
     private int collectableCounter;
@@ -47,7 +48,7 @@ public class chickenMove : MonoBehaviour {
         else if (Input.GetAxis("Horizontal") > 0)
             sr.flipX = false;
 
-        // detection de chute
+        // detection de chute / fin de niveau
         if(tr.position.y < -30)
             GetComponent<staticDisplay>().updateFinal("YOU LOSE !!!");
 
@@ -60,15 +61,16 @@ public class chickenMove : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        doCollectThings(other);
+        if(other.tag == "collectable_1")
+            doCollectThings(other);
+        else
+        {
+            // Update Jump
+            manaBar.GetComponent<lifeBarScript>().resetLifeBar(3f, 3f);
+            jumpsCounter = 0;
+            GetComponent<staticDisplay>().updateJumpCounter(jumpsCounter, maxConsecutivJumps);
 
-        // Update Jump
-        lifeBarTr.GetComponent<lifeBarScript>().resetLifeBar(3f, 3f);
-
-        jumpsCounter = 0;
-        GetComponent<staticDisplay>().updateJumpCounter(jumpsCounter, maxConsecutivJumps);
-        
-
+        }
 
     }
 
@@ -79,13 +81,14 @@ public class chickenMove : MonoBehaviour {
             collectableCounter++;
             GetComponent<staticDisplay>().updateCollectableCounter(collectableCounter, maxCollectableJumps);
             Destroy(c.gameObject);
+            progressBar.GetComponent<lifeBarScript>().addLP(10f);
         }
     }
 
     internal int jump()
     {
         // lifeBarUdate
-        lifeBarTr.GetComponent<lifeBarScript>().addLP(-1.0f);
+        manaBar.GetComponent<lifeBarScript>().addLP(-1.0f);
 
         if (jumpsCounter < maxConsecutivJumps)
         {

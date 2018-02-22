@@ -13,7 +13,7 @@ public class lifeBarScript : MonoBehaviour {
     public Transform background;
 
     private float xScale = 5;
-    private float yScale = 0.5f;
+    public float yScale = 0.5f;
     private float borderScale = 0.1f;
 
     // Use this for initialization
