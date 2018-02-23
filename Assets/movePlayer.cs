@@ -20,6 +20,7 @@ public class movePlayer : MonoBehaviour
     public Transform manaBar;
 
     private int jumpsCounter;
+
     private int collectableCounter;
 
 
@@ -50,8 +51,8 @@ public class movePlayer : MonoBehaviour
             sr.flipX = false;
 
         // detection de chute / fin de niveau
-        if (tr.position.y < -30)
-            GetComponent<staticDisplay>().updateFinal("YOU LOSE !!!");
+        //if (tr.position.y < -30)
+        //    GetComponent<staticDisplay>().updateFinal("YOU LOSE !!!");
 
     }
 
@@ -60,29 +61,10 @@ public class movePlayer : MonoBehaviour
         //doCollectThings(collision.collider);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    internal void resetJump()
     {
-        if (other.tag == "collectable_1")
-            doCollectThings(other);
-
-        if(other.tag == "resetJumpPlatform")
-        {
-            // Update Jump
-            manaBar.GetComponent<lifeBarScript>().resetLifeBar(3f, 3f);
-            jumpsCounter = 0;
-
-        }
-
-    }
-
-    private void doCollectThings(Collider2D c)
-    {
-        if (c.tag == "collectable_1")
-        {
-            collectableCounter++;
-            GetComponent<staticDisplay>().updateCollectableCounter(collectableCounter, maxCollectableJumps);
-            Destroy(c.gameObject);
-        }
+        manaBar.GetComponent<lifeBarScript>().resetLifeBar(3f, 3f);
+        jumpsCounter = 0;
     }
 
     internal int jump()
@@ -92,10 +74,15 @@ public class movePlayer : MonoBehaviour
 
         if (jumpsCounter < maxConsecutivJumps)
         {
+            if (jumpsCounter == 0)
+            {
+                GetComponent<windPower>().go();
+            }
+            
             // Update counter;
             jumpsCounter++;
-            //GetComponent<staticDisplay>().updateJumpCounter(jumpsCounter, maxConsecutivJumps);
             rb.velocity = new Vector2(0, jumpInitialSpeed);
+
             return jumpsCounter;
         }
         else

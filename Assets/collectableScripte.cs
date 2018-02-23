@@ -22,6 +22,7 @@ public class collectableScripte : MonoBehaviour {
         {
             Destroy(this.gameObject);
             progress.GetComponent<lifeScript>().addHp(1f);
+            progress.GetChild(1);
         }
             
     }
