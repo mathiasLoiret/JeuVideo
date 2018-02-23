@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class collectableScripte : MonoBehaviour {
 
-    private int count = 0;
+    public Transform progress;
 
 	// Use this for initialization
 	void Start () {
@@ -21,7 +21,7 @@ public class collectableScripte : MonoBehaviour {
         if (collision.tag == "Player")
         {
             Destroy(this.gameObject);
-            count++;
+            progress.GetComponent<lifeScript>().addHp(1f);
         }
             
     }

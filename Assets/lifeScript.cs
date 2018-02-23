@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ public class lifeScript : MonoBehaviour {
     public float actual;
 
     public float symbloleScale;
+    public float adjuster;
 
     private float max_old = 0;
     private float actual_old;
@@ -24,12 +26,12 @@ public class lifeScript : MonoBehaviour {
 	void Update () {
         updateMax();
         updateActual();
-
     }
 
-    void updateDisplay()
+    internal void addHp(float v)
     {
-        // DO STUFF
+        this.actual += v;
+        updateActual();
     }
 
     void updateActual()
@@ -40,7 +42,7 @@ public class lifeScript : MonoBehaviour {
         else if (actual > max)
             actual = max;
 
-        float delta = (actual_old - actual) * symbloleScale * 2;
+        float delta = (actual_old - actual) * symbloleScale * 2* adjuster;
         actual_old = actual;
 
         activ.transform.position = new Vector2(activ.transform.position.x - delta, activ.transform.position.y);
@@ -53,17 +55,16 @@ public class lifeScript : MonoBehaviour {
             max = 1;
 
         //DO STUFF
-        float delta = (max_old - max) * symbloleScale *2;
+        float delta = (max_old - max) * symbloleScale *2 * adjuster;
         max_old = max;
 
         if (delta != 0)
             Debug.Log(delta);
 
         unactiv.transform.position = new Vector2(unactiv.transform.position.x - delta, unactiv.transform.position.y);
+        //unactiv.transform.position = new Vector2(unactiv.transform.position.x, unactiv.transform.position.y);
         unactiv.size = new Vector2(symbloleScale * max, unactiv.size.y);
 
-
-        updateDisplay();
     }
 
     private void OnServerInitialized()
