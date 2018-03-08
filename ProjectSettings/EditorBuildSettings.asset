@@ -5,15 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/LiseM/kakapo.unity
-    guid: b72c54ee521a4794b84eb5a376fc1444
   - enabled: 1
     path: Assets/_scenes/MenuPrincp.unity
     guid: 4c44efb55af90b2468f02b6af7ace7d8
   - enabled: 1
     path: Assets/_scenes/lvl1.unity
-    guid: 7e85cd0300f299441868a7e911f063ab
+    guid: 36c6bebe32c71e540bc4e53a130e1e6e
   - enabled: 1
-    path: Assets/_scenes/scene2.unity
-    guid: b39868b8f7ecc8941a0aff88b877ff17
+    path: Assets/_scenes/lvl2.unity
+    guid: 050189474bda8f94d8fda41e7c500384
