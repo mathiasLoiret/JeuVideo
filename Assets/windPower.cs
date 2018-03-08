@@ -9,6 +9,10 @@ public class windPower : MonoBehaviour {
     private CircleCollider2D cc;
     private float windPowerTimer;
 
+    public Transform fire_ring_tr;
+
+    public float powerDuration;
+
 	// Use this for initialization
 	void Start () {
         cc = GetComponent<CircleCollider2D>();
@@ -17,9 +21,16 @@ public class windPower : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (windPowerTimer < 0)
+        {
             cc.enabled = false;
+            fire_ring_tr.GetComponent<Renderer>().enabled = false;
+        }
         else
+        {
             windPowerTimer--;
+            fire_ring_tr.GetComponent<Renderer>().enabled = true;
+        }
+            
     }
 
 
@@ -37,6 +48,6 @@ public class windPower : MonoBehaviour {
     internal void go()
     {
         cc.enabled = true;
-        windPowerTimer = 50;
+        windPowerTimer = powerDuration;
     }
 }
