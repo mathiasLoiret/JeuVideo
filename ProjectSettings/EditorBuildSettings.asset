@@ -8,3 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/LiseM/kakapo.unity
     guid: b72c54ee521a4794b84eb5a376fc1444
+  - enabled: 1
+    path: Assets/_scenes/Menu.unity
+    guid: 4c44efb55af90b2468f02b6af7ace7d8
+  - enabled: 1
+    path: Assets/_scenes/lvl1.unity
+    guid: 7e85cd0300f299441868a7e911f063ab
+  - enabled: 1
+    path: Assets/_scenes/scene2.unity
+    guid: b39868b8f7ecc8941a0aff88b877ff17
