@@ -6,6 +6,7 @@ TagManager:
   tags:
   - collectable_1
   - resetJumpPlatform
+  - enemy
   layers:
   - Default
   - TransparentFX
@@ -37,9 +38,12 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - hp-out
+  - hp-in
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: New Layer
+    uniqueID: 1392415413
     locked: 0
