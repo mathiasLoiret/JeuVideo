@@ -21,7 +21,7 @@ public class manageParticuleSystem : MonoBehaviour {
 		if(acc > 0.4f){
 			emission.enabled = false;
 		}
-		if(Input.GetKeyDown("space")){
+		if(Input.GetKey("space")){
 			emission.enabled = true;
 			acc = 0;
 		}
