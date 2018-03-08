@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 
 public class lifeScript : MonoBehaviour {
 
@@ -8,48 +10,61 @@ public class lifeScript : MonoBehaviour {
     public SpriteRenderer unactiv;
 
     public int max;
-    public int actual;
+    public float actual;
+
+    public float symbloleScale;
+    public float adjuster;
+
+    private float max_old = 0;
+    private float actual_old;
 
     // Use this for initialization
     void Start () {
-        updateActual(actual);
-        updateMax(max);
     }
 	
 	// Update is called once per frame
 	void Update () {
-        updateMax(max);
-	}
-
-    void updateDisplay()
-    {
-        // DO STUFF
+        updateMax();
+        updateActual();
     }
 
-    void updateActual(int i)
+    internal void addHp(float v)
     {
-        if(i < 0)
+        this.actual += v;
+        updateActual();
+    }
+
+    void updateActual()
+    {
+
+        if(actual < 0)
             actual = 0;
-        else if (i > max)
+        else if (actual > max)
             actual = max;
-        else
-            actual = i;
 
-        activ.size = new Vector2(0.13f * actual, unactiv.size.y);
+        float delta = (actual_old - actual) * symbloleScale * 2* adjuster;
+        actual_old = actual;
+
+        activ.transform.position = new Vector2(activ.transform.position.x - delta, activ.transform.position.y);
+        activ.size = new Vector2(symbloleScale * actual, activ.size.y);
     }
 
-    void updateMax(int max)
+    void updateMax()
     {
         if (max < 1)
             max = 1;
 
-        this.max = max;
-
         //DO STUFF
-        unactiv.size = new Vector2(0.13f * max, unactiv.size.y);
+        float delta = (max_old - max) * symbloleScale *2 * adjuster;
+        max_old = max;
 
+        if (delta != 0)
+            Debug.Log(delta);
 
-        updateDisplay();
+        unactiv.transform.position = new Vector2(unactiv.transform.position.x - delta, unactiv.transform.position.y);
+        //unactiv.transform.position = new Vector2(unactiv.transform.position.x, unactiv.transform.position.y);
+        unactiv.size = new Vector2(symbloleScale * max, unactiv.size.y);
+
     }
 
     private void OnServerInitialized()
