@@ -28,7 +28,7 @@ public class windPower : MonoBehaviour {
 	void Update () {
         if (windPowerTimer < 0)
         {
-            //cc.enabled = false;
+            cc.enabled = false;
             target_tr.GetComponent<Renderer>().enabled = false;
         }
         else
@@ -58,7 +58,7 @@ public class windPower : MonoBehaviour {
 
     internal void go()
     {
-        //cc.enabled = true;
+        cc.enabled = true;
         windPowerTimer = powerDuration;
         target_sr.transform.position = tr.position + new Vector3(0,1,0);
     }
