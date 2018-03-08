@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class windPower : MonoBehaviour {
 
-    public Transform tr;
+    private Transform tr;
     private CircleCollider2D cc;
     private float windPowerTimer;
 
@@ -15,6 +15,7 @@ public class windPower : MonoBehaviour {
     private SpriteRenderer target_sr;
 
     public float powerDuration;
+    public float power;
 
 	// Use this for initialization
 	void Start () {
@@ -50,8 +51,8 @@ public class windPower : MonoBehaviour {
         if (other.tag == "enemy")
         {
             other.GetComponent<Rigidbody2D>().velocity = 
-                new Vector2((other.transform.position.x - this.transform.position.x) *10, 
-                            (other.transform.position.y - this.transform.position.y) *10);
+                new Vector2((other.transform.position.x - this.transform.position.x) *power, 
+                            (other.transform.position.y - this.transform.position.y) *power);
         }      
     }
 
@@ -59,6 +60,6 @@ public class windPower : MonoBehaviour {
     {
         //cc.enabled = true;
         windPowerTimer = powerDuration;
-        //target_sr.transform.position = tr.position + new Vector3(0,-1,0);
+        target_sr.transform.position = tr.position + new Vector3(0,1,0);
     }
 }
