@@ -15,7 +15,7 @@ public class AStar
         Node end = PathFindingGraph.getEnd();
         List<Node> closeList = PathFindingGraph.generateGraph();
         List<Node> openList = new List<Node>();
-        PathFindingGraph.Crawl(closeList, start, end, openList, start);
+        // PathFindingGraph.Crawl(closeList, start, end, openList, start);
     }
 
 }

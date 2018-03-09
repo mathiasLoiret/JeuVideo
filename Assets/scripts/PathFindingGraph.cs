@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Node: IEquatable<Node>
 {
@@ -63,7 +64,7 @@ public static class PathFindingGraph
         return Z;
     }
 
-    public static void Crawl(List<Node> closeList, Node start, Node end, List<Node> openList, Node realStart)
+    public static void Crawl(List<Node> closeList, Node start, Node end, List<Node> openList, Node realStart, Tilemap floorTilemap, Tilemap wallTilemap)
     {
         if(openList.Count > 0){
             openList.ForEach(delegate(Node openNode){
@@ -103,7 +104,7 @@ public static class PathFindingGraph
         List<Node> tempNodes = new List<Node>();
 
         nearNodes.ForEach(delegate(Node nearNode){
-            if(!closeList.Contains(nearNode) && !openList.Contains(nearNode)){
+            if(!closeList.Contains(nearNode) && !openList.Contains(nearNode) && !isBlocked(nearNode.x, nearNode.y, floorTilemap, wallTilemap)){
                 nearNode.h = getHeuristic(nearNode, end);
                         
                 tempNodes.Add(nearNode);
@@ -139,7 +140,7 @@ public static class PathFindingGraph
                 // Debug.Log(toto.c + toto.h);
             });
 
-            getWay(realEndNode, end, realStart, 0, result).ForEach(delegate(Node resultNode){
+            getWay(realEndNode, end, realStart, 0, result, floorTilemap, wallTilemap).ForEach(delegate(Node resultNode){
                 // Debug.Log("x y :");
                 // Debug.Log(resultNode.x);
                 // Debug.Log(resultNode.y);
@@ -149,7 +150,7 @@ public static class PathFindingGraph
             return;
         }
 
-        Crawl(closeList, startNode, end, openList, realStart);
+        Crawl(closeList, startNode, end, openList, realStart, floorTilemap, wallTilemap);
     }
 
     public static float getHeuristic(Node start, Node end)
@@ -157,7 +158,7 @@ public static class PathFindingGraph
         return Convert.ToSingle(Math.Sqrt(Math.Pow(end.x - start.x, 2)+Math.Pow(end.y - start.y, 2)));
     }
 
-    public static List<Node> getWay(List<Node> closeList, Node end, Node start, int i, List<Node> result)
+    public static List<Node> getWay(List<Node> closeList, Node end, Node start, int i, List<Node> result, Tilemap floorTilemap, Tilemap wallTilemap)
     {
         List<Node> nearNodes = new List<Node>();
         Node NO = new Node(end.x - 1, end.y -1);
@@ -182,7 +183,7 @@ public static class PathFindingGraph
         }
 
         nearNodes.ForEach(delegate(Node nearNode){
-            if(closeList.Contains(nearNode)){
+            if(closeList.Contains(nearNode) && !isBlocked(nearNode.x, nearNode.y, floorTilemap, wallTilemap)){
                 int index = closeList.IndexOf(nearNode);
 
                 Node node = closeList[index];
@@ -198,6 +199,19 @@ public static class PathFindingGraph
             }
         });
 
-        return getWay(closeList, result[i], start, i+1, result);        
+        return getWay(closeList, result[i], start, i+1, result, floorTilemap, wallTilemap);        
+    }
+
+    public static bool isBlocked(float x, float y, Tilemap floorTilemap, Tilemap wallTilemap)
+    {
+        if (floorTilemap.GetTile(new Vector3Int((int)x, (int)y, 0)) != null){
+            return true;
+        }
+        else if (wallTilemap.GetTile(new Vector3Int((int)x, (int)y, 0)) != null){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }
