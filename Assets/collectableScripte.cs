@@ -6,11 +6,12 @@ public class collectableScripte : MonoBehaviour {
 
     public Transform progress;
     public AudioSource source;
+    private Transform tr;
 
 	// Use this for initialization
 	void Start () {
-		
-	}
+        tr = GetComponent<Transform>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -25,9 +26,8 @@ public class collectableScripte : MonoBehaviour {
         {
             source.Play();
             Destroy(this.gameObject);
+            tr.parent.parent.GetComponent<gameManager>().hadCollected(tr.parent.tag, 1);
             progress.GetComponent<lifeScript>().addHp(1f);
-            progress.GetChild(1);
-
         }
             
     }

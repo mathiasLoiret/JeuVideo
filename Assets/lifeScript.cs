@@ -19,13 +19,14 @@ public class lifeScript : MonoBehaviour {
     private float actual_old;
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
+        updateMax();
+        updateActual();
     }
 	
 	// Update is called once per frame
 	void Update () {
-        updateMax();
-        updateActual();
     }
 
     internal void addHp(float v)
@@ -47,6 +48,19 @@ public class lifeScript : MonoBehaviour {
 
         activ.transform.position = new Vector2(activ.transform.position.x - delta, activ.transform.position.y);
         activ.size = new Vector2(symbloleScale * actual, activ.size.y);
+
+        if(this.name == "Progress")
+            testVictory();
+    }
+
+    private void testVictory()
+    {
+        if (actual >= max)
+        {
+            Debug.Log("victory");
+            GetComponent<Transform>().parent.parent.parent.GetComponent<gameManager>().victory();
+        }
+            
     }
 
     void updateMax()

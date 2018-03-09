@@ -58,6 +58,12 @@ public class movePlayer : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.transform.tag == "deal_damage")
+        {
+            Debug.Log("outch");
+            //TODO : 
+        }
+        
         //doCollectThings(collision.collider);
     }
 
@@ -76,7 +82,7 @@ public class movePlayer : MonoBehaviour
         {
             if (jumpsCounter == 0)
             {
-                GetComponent<windPower>().go();
+                tr.parent.Find("envol_1").GetComponent<windPower>().go();
             }
             
             // Update counter;
