@@ -32,7 +32,7 @@ public class lifeScript : MonoBehaviour
     {
     }
 
-    internal float addHp(float v)
+    public float addHp(float v)
     {
         this.actual += v;
         updateActual();
