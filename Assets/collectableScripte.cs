@@ -5,6 +5,7 @@ using UnityEngine;
 public class collectableScripte : MonoBehaviour {
 
     public Transform progress;
+    public AudioSource source;
 
 	// Use this for initialization
 	void Start () {
@@ -18,11 +19,15 @@ public class collectableScripte : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+    
+
         if (collision.tag == "Player")
         {
+            source.Play();
             Destroy(this.gameObject);
             progress.GetComponent<lifeScript>().addHp(1f);
             progress.GetChild(1);
+
         }
             
     }
