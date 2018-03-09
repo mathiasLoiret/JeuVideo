@@ -57,7 +57,7 @@ public class lifeScript : MonoBehaviour {
     {
         if (actual >= max)
         {
-            Debug.Log("victory");
+           // Debug.Log("victory");
             GetComponent<Transform>().parent.parent.parent.GetComponent<gameManager>().victory();
         }
             
@@ -72,8 +72,8 @@ public class lifeScript : MonoBehaviour {
         float delta = (max_old - max) * symbloleScale *2 * adjuster;
         max_old = max;
 
-        if (delta != 0)
-            Debug.Log(delta);
+  //      if (delta != 0)
+//            Debug.Log(delta);
 
         unactiv.transform.position = new Vector2(unactiv.transform.position.x - delta, unactiv.transform.position.y);
         //unactiv.transform.position = new Vector2(unactiv.transform.position.x, unactiv.transform.position.y);

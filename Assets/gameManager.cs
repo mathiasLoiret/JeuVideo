@@ -24,6 +24,6 @@ public class gameManager : MonoBehaviour {
 
     internal void hadCollected(string name, int v)
     {
-        Debug.Log("collect : " + name + " - " + v);
+       // Debug.Log("collect : " + name + " - " + v);
     }
 }

@@ -58,7 +58,7 @@ public class windPower : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D other)
     {
         
-        Debug.Log("windPower-OnCollisionEnter2D-" + other.tag);
+        //Debug.Log("windPower-OnCollisionEnter2D-" + other.tag);
         if (other.tag == "enemy")
         {
             other.GetComponent<Rigidbody2D>().velocity =
