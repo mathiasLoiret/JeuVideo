@@ -8,6 +8,7 @@ public class lifeScript : MonoBehaviour {
 
     public SpriteRenderer activ;
     public SpriteRenderer unactiv;
+    public AudioClip winclip;
 
     public int max;
     public float actual;
@@ -59,6 +60,9 @@ public class lifeScript : MonoBehaviour {
         {
            // Debug.Log("victory");
             GetComponent<Transform>().parent.parent.parent.GetComponent<gameManager>().victory();
+            GetComponent<AudioSource>().clip = winclip;
+            GetComponent<AudioSource>().Play();
+
         }
             
     }
