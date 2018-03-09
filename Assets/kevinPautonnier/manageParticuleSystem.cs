@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class manageParticuleSystem : MonoBehaviour {
-
+	
 	public ParticleSystem ps;
 	public ParticleSystem.EmissionModule emission;
 

@@ -11,10 +11,11 @@ public class AStar
     [Test]
     public void AStarSimplePasses()
     {
-        Node start = PathFindingGraph.generateGraph();
-        var list = new List<Node>();
-        list.Add(start);
-        PathFindingGraph.Crawl(4, list);
+        Node start = PathFindingGraph.getStart();
+        Node end = PathFindingGraph.getEnd();
+        List<Node> closeList = PathFindingGraph.generateGraph();
+        List<Node> openList = new List<Node>();
+        PathFindingGraph.Crawl(closeList, start, end, openList, start);
     }
 
 }
