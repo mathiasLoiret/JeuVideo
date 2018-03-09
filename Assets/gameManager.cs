@@ -2,20 +2,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class gameManager : MonoBehaviour {
+public class gameManager : MonoBehaviour
+{
+
 
     public Transform victoryPic;
 
-	// Use this for initialization
-	void Start () {
+    private Vector3 respownPosition;
+
+    // Use this for initialization
+    void Start()
+    {
         victoryPic.GetComponent<Renderer>().enabled = false;
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    // Update is called once per frame
+    void Update()
+    {
+        respownPosition = GetComponent<Transform>().position;
+
+    }
 
     internal void victory()
     {
@@ -24,6 +32,22 @@ public class gameManager : MonoBehaviour {
 
     internal void hadCollected(string name, int v)
     {
-       // Debug.Log("collect : " + name + " - " + v);
+        transform.Find("Player&Cam").Find("Main Camera").Find("Progress").GetComponent<lifeScript>().addHp(1f);
+
+    }
+
+    internal void playerHaveBeenHurt(float v)
+    {
+        if (transform.Find("Player&Cam").Find("Main Camera").Find("Life").GetComponent<lifeScript>().addHp(-1f) < 1)
+        {
+            Debug.Log("you lose");
+            SceneManager.LoadScene("MenuPrincp", LoadSceneMode.Single);
+        }
+        else
+        {
+            transform.Find("Player&Cam").Find("PlayerContainer").Find("Player").GetComponent<Transform>().position = respownPosition + new Vector3(0, 2, 0);
+        }
+
+
     }
 }

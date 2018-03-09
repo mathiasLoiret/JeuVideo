@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class lifeScript : MonoBehaviour {
+public class lifeScript : MonoBehaviour
+{
 
     public SpriteRenderer activ;
     public SpriteRenderer unactiv;
@@ -20,37 +21,39 @@ public class lifeScript : MonoBehaviour {
     private float actual_old;
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         updateMax();
         updateActual();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
     }
 
-    internal void addHp(float v)
+    internal float addHp(float v)
     {
         this.actual += v;
         updateActual();
+        return this.actual;
     }
 
     void updateActual()
     {
 
-        if(actual < 0)
+        if (actual < 0)
             actual = 0;
         else if (actual > max)
             actual = max;
 
-        float delta = (actual_old - actual) * symbloleScale * 2* adjuster;
+        float delta = (actual_old - actual) * symbloleScale * 2 * adjuster;
         actual_old = actual;
 
         activ.transform.position = new Vector2(activ.transform.position.x - delta, activ.transform.position.y);
         activ.size = new Vector2(symbloleScale * actual, activ.size.y);
 
-        if(this.name == "Progress")
+        if (this.name == "Progress")
             testVictory();
     }
 
@@ -58,13 +61,13 @@ public class lifeScript : MonoBehaviour {
     {
         if (actual >= max)
         {
-           // Debug.Log("victory");
+            // Debug.Log("victory");
             GetComponent<Transform>().parent.parent.parent.GetComponent<gameManager>().victory();
             GetComponent<AudioSource>().clip = winclip;
             GetComponent<AudioSource>().Play();
 
         }
-            
+
     }
 
     void updateMax()
@@ -73,11 +76,11 @@ public class lifeScript : MonoBehaviour {
             max = 1;
 
         //DO STUFF
-        float delta = (max_old - max) * symbloleScale *2 * adjuster;
+        float delta = (max_old - max) * symbloleScale * 2 * adjuster;
         max_old = max;
 
-  //      if (delta != 0)
-//            Debug.Log(delta);
+        //      if (delta != 0)
+        //            Debug.Log(delta);
 
         unactiv.transform.position = new Vector2(unactiv.transform.position.x - delta, unactiv.transform.position.y);
         //unactiv.transform.position = new Vector2(unactiv.transform.position.x, unactiv.transform.position.y);
@@ -87,6 +90,6 @@ public class lifeScript : MonoBehaviour {
 
     private void OnServerInitialized()
     {
-        
+
     }
 }
