@@ -11,25 +11,29 @@ public class windPower : MonoBehaviour {
 
     public Sprite[] envole1_sprite;
 
-    public Transform target_tr;
+    private Transform target_tr;
     private SpriteRenderer target_sr;
+
+    public Transform player;
 
     public float powerDuration;
     public float power;
 
 	// Use this for initialization
-	void Start () {
-        cc = GetComponent<CircleCollider2D>();
+	void Start ()
+    {
         tr = GetComponent<Transform>();
-        target_sr = target_tr.GetComponent<SpriteRenderer>();
-	}
+        cc = GetComponent<CircleCollider2D>();
+        cc.enabled = false;
+        target_sr = GetComponent<SpriteRenderer>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
         if (windPowerTimer < 0)
         {
             cc.enabled = false;
-            target_tr.GetComponent<Renderer>().enabled = false;
+            tr.GetComponent<Renderer>().enabled = false;
         }
         else
         {
@@ -39,27 +43,35 @@ public class windPower : MonoBehaviour {
             else
                 target_sr.sprite = envole1_sprite[1];
 
-            target_tr.GetComponent<Renderer>().enabled = true;
+            tr.GetComponent<Renderer>().enabled = true;
         }
             
     }
 
 
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //Collider2D other = collision.collider;
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
+        
+        Debug.Log("windPower-OnCollisionEnter2D-" + other.tag);
         if (other.tag == "enemy")
         {
-            other.GetComponent<Rigidbody2D>().velocity = 
-                new Vector2((other.transform.position.x - this.transform.position.x) *power, 
-                            (other.transform.position.y - this.transform.position.y) *power);
-        }      
+            other.GetComponent<Rigidbody2D>().velocity =
+                new Vector2((other.transform.position.x - this.transform.position.x) * power,
+                            (other.transform.position.y - this.transform.position.y) * power);
+        }
+
     }
 
     internal void go()
     {
         cc.enabled = true;
         windPowerTimer = powerDuration;
-        target_sr.transform.position = tr.position + new Vector3(0,1,0);
+        target_sr.transform.position = player.position + new Vector3(0,1,0);
     }
 }
