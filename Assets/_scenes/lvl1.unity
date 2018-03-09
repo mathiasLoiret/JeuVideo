@@ -57429,6 +57429,7 @@ GameObject:
   - component: {fileID: 1842393811}
   - component: {fileID: 1842393814}
   - component: {fileID: 1842393815}
+  - component: {fileID: 1842393816}
   m_Layer: 0
   m_Name: foxes2_13
   m_TagString: enemy
@@ -57448,7 +57449,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.021587804, y: -0.23740157}
+  m_Offset: {x: 0.052088827, y: -0.20137808}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -57459,7 +57460,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.76571167, y: 0.4851969}
+  m_Size: {x: 0.92480344, y: 0.5572439}
   m_EdgeRadius: 0
 --- !u!212 &1842393812
 SpriteRenderer:
@@ -57549,3 +57550,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4504c5100a387042ad29b822303f419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1842393816
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1842393810}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.096288085, y: -0.19132054}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.96, y: 0.96}
+    newSize: {x: 0.96, y: 0.96}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.1525764, y: 0.60766697}
+  m_EdgeRadius: 0

@@ -65,7 +65,7 @@ public class movePlayer : MonoBehaviour
         else if (collision.transform.tag == "enemy")
         {
             Debug.Log("HO NO AN ENEMY !!!");
-            //tr.parent.parent.GetComponentInParent<gameManager>().playerHaveBeenHurt(-1f);
+            tr.parent.parent.GetComponentInParent<gameManager>().playerHaveBeenHurt(-1f);
         }
     }
 
