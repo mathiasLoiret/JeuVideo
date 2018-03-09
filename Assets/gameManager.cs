@@ -12,6 +12,9 @@ public class gameManager : MonoBehaviour
 
     private Vector3 respownPosition;
 
+    private float deltaTime = 0.0f;
+    private float minTimeBetwinDamage = 1f;
+
     // Use this for initialization
     void Start()
     {
@@ -23,6 +26,7 @@ public class gameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        deltaTime += Time.deltaTime;
     }
 
     internal void victory()
@@ -38,17 +42,22 @@ public class gameManager : MonoBehaviour
 
     internal void playerHaveBeenHurt(float v)
     {
-        if (transform.Find("Player&Cam").Find("Main Camera").Find("Life").GetComponent<lifeScript>().addHp(-1f) < 1)
+        if (deltaTime > minTimeBetwinDamage)
         {
-            Debug.Log("you lose");
-            SceneManager.LoadScene("MenuPrincp", LoadSceneMode.Single);
+            if (transform.Find("Player&Cam").Find("Main Camera").Find("Life").GetComponent<lifeScript>().addHp(-1f) < 1)
+            {
+                Debug.Log("you lose");
+                SceneManager.LoadScene("MenuPrincp", LoadSceneMode.Single);
+            }
+            else
+            {
+                Transform player_tr = transform.Find("Player&Cam").Find("PlayerContainer").Find("Player").GetComponent<Transform>();
+                player_tr.position = respownPosition + new Vector3(0, 2, 0);
+                player_tr.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
+                transform.Find("Player&Cam").Find("PlayerContainer").Find("Player").Find("EnergieBar").GetComponent<lifeBarScript>().addLP(3f);
+            }
+            deltaTime = 0;
         }
-        else
-        {
-            Transform player_tr = transform.Find("Player&Cam").Find("PlayerContainer").Find("Player").GetComponent<Transform>();
-            player_tr.position = respownPosition + new Vector3(0, 2, 0);
-            player_tr.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
-            transform.Find("Player&Cam").Find("PlayerContainer").Find("Player").Find("EnergieBar").GetComponent<lifeBarScript>().addLP(3f);
-        }
+        
     }
 }
