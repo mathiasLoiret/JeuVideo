@@ -60,7 +60,6 @@ public class movePlayer : MonoBehaviour
     {
         if (collision.transform.name == "danger")
         {
-            Debug.Log("outch");
             tr.parent.parent.GetComponentInParent<gameManager>().playerHaveBeenHurt(-1f);
         }
         else if (collision.transform.tag == "enemy")
