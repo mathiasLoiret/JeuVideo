@@ -6,21 +6,30 @@ using UnityEngine.Tilemaps;
 public class ShowHideTiles : MonoBehaviour {
 	public GameObject tileMap;
 	// Use this for initialization
+	private Collider2D collider;
 	void Start () {
-		
+		collider = GetComponent<Collider2D>();
 	}
-	
- private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Player")
-        {
-			if(tileMap.GetComponent<TilemapRenderer>().enabled ){
-				tileMap.GetComponent<TilemapRenderer>().enabled = false;
-			}else{
-				tileMap.GetComponent<TilemapRenderer>().enabled = true;
-			}
 
-        }
-            
+	void Update()
+	{
+	
     }
+	
+	
+	void OnTriggerEnter2D(Collider2D collision) {
+		if (collision.tag == "Player")
+        {
+       tileMap.GetComponent<TilemapRenderer>().enabled = false;
+		}
+    }
+
+
+	void OnTriggerExit2D(Collider2D collision) {
+		if (collision.tag == "Player")
+        {
+        tileMap.GetComponent<TilemapRenderer>().enabled = true;
+		}
+    }
+
 }
