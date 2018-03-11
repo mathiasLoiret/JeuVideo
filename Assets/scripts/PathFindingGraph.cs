@@ -24,48 +24,16 @@ public class Node: IEquatable<Node>
     }
 }
 
-public static class PathFindingGraph
+public class PathFindingGraph
 {
-    public static List<Node> generateGraph()
-    {
-        Node A = new Node(3, 1);
-        A.c = 99999;
-        Node B = new Node(3, 2);
-        B.c = 99999;        
-        Node C = new Node(4, 2);
-        C.c = 99999;        
-        Node D = new Node(5, 2);
-        D.c = 99999;        
-        Node E = new Node(6, 2);
-        E.c = 99999;        
-        Node F = new Node(7, 2);
-        F.c = 99999;        
+    public static Vector3Int vect3;
+    public static bool isBlock;
 
-        List<Node> graph = new List<Node>();
-        graph.Add(A);    
-        graph.Add(B);
-        graph.Add(C);    
-        graph.Add(D);    
-        graph.Add(E);    
-        graph.Add(F);   
-
-        return graph;
-    }
-
-    public static Node getStart()
+    public static List<Node> Crawl(List<Node> closeList, Node start, Node end, List<Node> openList, Node realStart, Tilemap floorTilemap, Tilemap wallTilemap, Tilemap stairsTilemap)
     {
-        Node S = new Node(7, 4);        
-        return S;
-    }  
-    
-    public static Node getEnd()
-    {
-        Node Z = new Node(4, 1);        
-        return Z;
-    }
-
-    public static void Crawl(List<Node> closeList, Node start, Node end, List<Node> openList, Node realStart, Tilemap floorTilemap, Tilemap wallTilemap)
-    {
+        if(isBlocked(end.x, end.y, floorTilemap, wallTilemap, stairsTilemap)){
+            return new List<Node>();
+        }
         if(openList.Count > 0){
             openList.ForEach(delegate(Node openNode){
                 if(openNode.x == start.x && openNode.y == start.y){
@@ -104,20 +72,17 @@ public static class PathFindingGraph
         List<Node> tempNodes = new List<Node>();
 
         nearNodes.ForEach(delegate(Node nearNode){
-            if(!closeList.Contains(nearNode) && !openList.Contains(nearNode) && !isBlocked(nearNode.x, nearNode.y, floorTilemap, wallTilemap)){
+
+            if(nearNode.c != 99999 && isBlocked(nearNode.x, nearNode.y, floorTilemap, wallTilemap, stairsTilemap)){
+                nearNode.c = 99999;
+            }
+            if(!closeList.Contains(nearNode) && !openList.Contains(nearNode) /*&& !isBlocked(nearNode.x, nearNode.y, floorTilemap, wallTilemap)*/){
                 nearNode.h = getHeuristic(nearNode, end);
                         
-                tempNodes.Add(nearNode);
+                openList.Add(nearNode);
             }
         });
         
-        tempNodes.ForEach(delegate(Node tempNode){
-            // Debug.Log("positions :");
-            // Debug.Log(tempNode.x);
-            // Debug.Log(tempNode.y);
-            openList.Add(tempNode);
-        });
-            
         Node startNode = openList.OrderBy(node => node.c+node.h).ToList().First();
 
         // Debug.Log("positions :");
@@ -128,29 +93,23 @@ public static class PathFindingGraph
 
         if(startNode.x == end.x && startNode.y == end.y){
             List<Node> result = new List<Node>();
-            Debug.Log("end");
+            // Debug.Log("end");
 
             List<Node> realEndNode = closeList.OrderBy(node => node.c+node.h).ToList();
 
-            realEndNode.ForEach(delegate(Node toto){
-                // Debug.Log("x y :");
-                // Debug.Log(toto.x);
-                // Debug.Log(toto.y);
-                // Debug.Log("c + h :");
-                // Debug.Log(toto.c + toto.h);
-            });
-
-            getWay(realEndNode, end, realStart, 0, result, floorTilemap, wallTilemap).ForEach(delegate(Node resultNode){
+            // getWay(realEndNode, end, realStart, 0, result, floorTilemap, wallTilemap).ForEach(delegate(Node resultNode){
                 // Debug.Log("x y :");
                 // Debug.Log(resultNode.x);
                 // Debug.Log(resultNode.y);
                 // Debug.Log("c + h :");
                 // Debug.Log(resultNode.c + resultNode.h);
-            });
-            return;
-        }
+            // });
 
-        Crawl(closeList, startNode, end, openList, realStart, floorTilemap, wallTilemap);
+            return getWay(realEndNode, end, realStart, 0, result, floorTilemap, wallTilemap, stairsTilemap);
+        }
+        else{
+            return Crawl(closeList, startNode, end, openList, realStart, floorTilemap, wallTilemap, stairsTilemap);
+        }
     }
 
     public static float getHeuristic(Node start, Node end)
@@ -158,7 +117,7 @@ public static class PathFindingGraph
         return Convert.ToSingle(Math.Sqrt(Math.Pow(end.x - start.x, 2)+Math.Pow(end.y - start.y, 2)));
     }
 
-    public static List<Node> getWay(List<Node> closeList, Node end, Node start, int i, List<Node> result, Tilemap floorTilemap, Tilemap wallTilemap)
+    public static List<Node> getWay(List<Node> closeList, Node end, Node start, int i, List<Node> result, Tilemap floorTilemap, Tilemap wallTilemap, Tilemap stairsTilemap)
     {
         List<Node> nearNodes = new List<Node>();
         Node NO = new Node(end.x - 1, end.y -1);
@@ -183,9 +142,8 @@ public static class PathFindingGraph
         }
 
         nearNodes.ForEach(delegate(Node nearNode){
-            if(closeList.Contains(nearNode) && !isBlocked(nearNode.x, nearNode.y, floorTilemap, wallTilemap)){
+            if(closeList.Contains(nearNode) /*&& !isBlocked(nearNode.x, nearNode.y, floorTilemap, wallTilemap)*/){
                 int index = closeList.IndexOf(nearNode);
-
                 Node node = closeList[index];
                 closeList.Remove(node);
                 if(result.Count < i+1){               
@@ -199,18 +157,33 @@ public static class PathFindingGraph
             }
         });
 
-        return getWay(closeList, result[i], start, i+1, result, floorTilemap, wallTilemap);        
+        return getWay(closeList, result[i], start, i+1, result, floorTilemap, wallTilemap, stairsTilemap);        
     }
 
-    public static bool isBlocked(float x, float y, Tilemap floorTilemap, Tilemap wallTilemap)
+    public static bool isBlocked(float x, float y, Tilemap floorTilemap, Tilemap wallTilemap, Tilemap stairsTilemap)
     {
-        if (floorTilemap.GetTile(new Vector3Int((int)x, (int)y, 0)) != null){
+        if(vect3.x == x && vect3.y == y){
+            return isBlock;
+        }
+        else{
+            vect3.x = (int)x;
+            vect3.y = (int)y;
+        }
+        
+        if (floorTilemap.GetTile(vect3) != null){
+            isBlock = true;
             return true;
         }
-        else if (wallTilemap.GetTile(new Vector3Int((int)x, (int)y, 0)) != null){
+        else if (wallTilemap.GetTile(vect3) != null){
+            isBlock = true;            
+            return true;
+        }
+        else if (stairsTilemap.GetTile(vect3) != null){
+            isBlock = true;            
             return true;
         }
         else{
+            isBlock = false;            
             return false;
         }
     }
