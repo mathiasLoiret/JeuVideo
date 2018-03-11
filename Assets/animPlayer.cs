@@ -51,7 +51,7 @@ public class animPlayer : MonoBehaviour
         //if (sprites.Length == 0) return;
 
         // Dection d'appui sur touche
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetAxis("Vertical") > 0)
         {
             if (currentAction != "space" || current_sprite.Length - 1 == curentIndex)
                 nextAction = "space";

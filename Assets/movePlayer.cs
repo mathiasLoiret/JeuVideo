@@ -56,15 +56,17 @@ public class movePlayer : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.tag == "deal_damage")
+        if (collision.transform.name == "danger")
         {
-            Debug.Log("outch");
-            //TODO : 
+            tr.parent.parent.GetComponentInParent<gameManager>().playerHaveBeenHurt(-1f);
         }
-        
-        //doCollectThings(collision.collider);
+        else if (collision.transform.tag == "enemy")
+        {
+            Debug.Log("HO NO AN ENEMY !!!");
+            tr.parent.parent.GetComponentInParent<gameManager>().playerHaveBeenHurt(-1f);
+        }
     }
 
     internal void resetJump()
@@ -84,7 +86,7 @@ public class movePlayer : MonoBehaviour
             {
                 tr.parent.Find("envol_1").GetComponent<windPower>().go();
             }
-            
+
             // Update counter;
             jumpsCounter++;
             rb.velocity = new Vector2(0, jumpInitialSpeed);
