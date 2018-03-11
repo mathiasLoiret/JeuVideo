@@ -23266,6 +23266,49 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: 61.18
       objectReference: {fileID: 0}
+    - target: {fileID: 114583013496258342, guid: 9ab3d180afaad684aac8c25801d12841,
+        type: 2}
+      propertyPath: floor
+      value: 
+      objectReference: {fileID: 887194176}
+    - target: {fileID: 114583013496258342, guid: 9ab3d180afaad684aac8c25801d12841,
+        type: 2}
+      propertyPath: wall
+      value: 
+      objectReference: {fileID: 1422373698}
+    - target: {fileID: 114583013496258342, guid: 9ab3d180afaad684aac8c25801d12841,
+        type: 2}
+      propertyPath: stairs
+      value: 
+      objectReference: {fileID: 761211546}
+    - target: {fileID: 114583013496258342, guid: 9ab3d180afaad684aac8c25801d12841,
+        type: 2}
+      propertyPath: gridLayout
+      value: 
+      objectReference: {fileID: 1567451549}
+    - target: {fileID: 4281040587091516, guid: 9ab3d180afaad684aac8c25801d12841, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 212045275695414870, guid: 9ab3d180afaad684aac8c25801d12841,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2ff64908fa662d1488d1613dd8b24f71,
+        type: 3}
+    - target: {fileID: 212045275695414870, guid: 9ab3d180afaad684aac8c25801d12841,
+        type: 2}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281040587091516, guid: 9ab3d180afaad684aac8c25801d12841, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281040587091516, guid: 9ab3d180afaad684aac8c25801d12841, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9ab3d180afaad684aac8c25801d12841, type: 2}
   m_IsPrefabParent: 0
