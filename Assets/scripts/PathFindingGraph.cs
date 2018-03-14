@@ -29,6 +29,8 @@ public class PathFindingGraph
     public static Vector3Int vect3;
     public static bool isBlock;
 
+    // SBO: Attention au récursif, le nombre d'appels imbriqué est limité en C#
+    // En dehors de ça, bonne appropriation. Ne pas hésiter à ajouter des commentaires de code pour expliquer à haut niveau la logique de fonctionnement.
     public static List<Node> Crawl(List<Node> closeList, Node start, Node end, List<Node> openList, Node realStart, Tilemap floorTilemap, Tilemap wallTilemap, Tilemap stairsTilemap)
     {
         if(isBlocked(end.x, end.y, floorTilemap, wallTilemap, stairsTilemap)){
@@ -71,6 +73,8 @@ public class PathFindingGraph
 
         List<Node> tempNodes = new List<Node>();
 
+        // SBO: Syntaxe plus simple possible avec l'opérateur =>
+        // nearNodes.ForEach(nearNode => {
         nearNodes.ForEach(delegate(Node nearNode){
 
             if(nearNode.c != 99999 && isBlocked(nearNode.x, nearNode.y, floorTilemap, wallTilemap, stairsTilemap)){

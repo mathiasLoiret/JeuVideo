@@ -28,6 +28,7 @@ public class coucouScript : MonoBehaviour {
 	void Update () {
 
 		// changer d'animation sur Input
+		// SBO: utiliser Input.GetButtonDown + InputManager plutôt pour permettre le jeu à la manette ou au clavier
 		if (Input.GetKey (KeyCode.DownArrow)) {
 			currentAnim = System.Array
 				.FindIndex (anims, anim => {

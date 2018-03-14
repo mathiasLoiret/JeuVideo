@@ -50,6 +50,7 @@ public class chickenMove : MonoBehaviour {
 
         // detection de chute / fin de niveau
         if(tr.position.y < -30)
+            // SBO: préférer le GetComponent dans le start() pour des raisons de performance
             GetComponent<staticDisplay>().updateFinal("YOU LOSE !!!");
 
     }
@@ -66,6 +67,7 @@ public class chickenMove : MonoBehaviour {
         else
         {
             // Update Jump
+            // SBO: préférer le GetComponent dans le start() pour des raisons de performance            
             manaBar.GetComponent<lifeBarScript>().resetLifeBar(3f, 3f);
             jumpsCounter = 0;
             GetComponent<staticDisplay>().updateJumpCounter(jumpsCounter, maxConsecutivJumps);
