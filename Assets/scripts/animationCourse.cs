@@ -51,6 +51,7 @@ public class animationCourse : MonoBehaviour
         //if (sprites.Length == 0) return;
 
         // Dection d'appui sur touche
+        // SBO: utiliser Input.GetButtonDown + InputManager plutôt pour permettre le jeu à la manette ou au clavier
         if (Input.GetKey(KeyCode.Space))
         {
             if(currentAction != "space" || current_sprite.Length-1 == curentIndex)

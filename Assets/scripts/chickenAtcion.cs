@@ -17,6 +17,7 @@ public class chickenAtcion : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         timer += Time.deltaTime;
+        // SBO: Input.GetButtonDown sera plus pertinent pour un button que GetAxis
         if(timer > attaqueSpeed && Input.GetAxis("Fire1")>0 )
         {
             fire();

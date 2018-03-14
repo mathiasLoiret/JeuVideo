@@ -20,6 +20,7 @@ public class folowPoulet : MonoBehaviour {
         tr = GetComponent<Transform>();
         folowDirection = new Vector3(0,0,0);
 
+        // SBO: équivalent de "percentToGoByFrame = Mathf.Clamp(0.01f, 1, percentToGoByFrame);"
         if (percentToGoByFrame > 1)
             percentToGoByFrame = 1f;
         if (percentToGoByFrame <= 0)
