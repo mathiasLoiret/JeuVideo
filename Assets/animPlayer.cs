@@ -108,10 +108,12 @@ public class animPlayer : MonoBehaviour
                 {
                     current_sprite = wait_sprites;
                 }
+                /*
                 else if (currentAction == "down")
                 {
                     current_sprite = roulade_sprites;
                 }
+                */
             }
 
             sr.sprite = current_sprite[curentIndex];
