@@ -36,11 +36,11 @@ public class collectableScripte : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-
         if (collision.tag == "Player")
         {
-            source.Play();
+            cc.enabled = false;
             tr.parent.parent.GetComponent<gameManager>().hadCollected(tr.parent.tag, 1);
+            source.Play();
             i = Time.deltaTime;
             //progress.GetComponent<lifeScript>().addHp(1f);
         }
