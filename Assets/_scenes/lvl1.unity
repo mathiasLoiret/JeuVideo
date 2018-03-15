@@ -23368,6 +23368,31 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114373573950931334, guid: 9ab3d180afaad684aac8c25801d12841,
+        type: 2}
+      propertyPath: floor
+      value: 
+      objectReference: {fileID: 887194176}
+    - target: {fileID: 114373573950931334, guid: 9ab3d180afaad684aac8c25801d12841,
+        type: 2}
+      propertyPath: wall
+      value: 
+      objectReference: {fileID: 1422373698}
+    - target: {fileID: 114373573950931334, guid: 9ab3d180afaad684aac8c25801d12841,
+        type: 2}
+      propertyPath: stairs
+      value: 
+      objectReference: {fileID: 761211546}
+    - target: {fileID: 114373573950931334, guid: 9ab3d180afaad684aac8c25801d12841,
+        type: 2}
+      propertyPath: gridLayout
+      value: 
+      objectReference: {fileID: 1567451549}
+    - target: {fileID: 212045275695414870, guid: 9ab3d180afaad684aac8c25801d12841,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 82184184879567516, guid: 9ab3d180afaad684aac8c25801d12841, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9ab3d180afaad684aac8c25801d12841, type: 2}

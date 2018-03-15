@@ -27,27 +27,6 @@ public class coucouScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		// changer d'animation sur Input
-		if (Input.GetKey (KeyCode.DownArrow)) {
-			currentAnim = System.Array
-				.FindIndex (anims, anim => {
-					return anim.name == "roll";
-				});
-		}
-		if (Input.GetKey (KeyCode.RightArrow)) {
-			currentAnim = System.Array
-				.FindIndex (anims, anim => {
-					return anim.name == "run";
-				});
-		}
-
-		if (Input.GetKey (KeyCode.UpArrow)) {
-			currentAnim = System.Array
-				.FindIndex (anims, anim => {
-					return anim.name == "jump";
-				});
-		}
-
 		// durée souhaitée d'une frame
 		float frameDuration = GetFrameDurationInSec ();
 
