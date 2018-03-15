@@ -23007,7 +23007,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2077406d33838c64eac2abc804a48053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutoSprite: []
+  tutoSprite:
+  - {fileID: 21300000, guid: bdbf1f647bdda9142bcc7fbf12e62e45, type: 3}
   spriteRendererParent: {fileID: 1451645887}
 --- !u!61 &587344079
 BoxCollider2D:
@@ -90476,7 +90477,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2077406d33838c64eac2abc804a48053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutoSprite: []
+  tutoSprite:
+  - {fileID: 21300000, guid: 748a1fc363b6b4248be1ebdb17c1a444, type: 3}
   spriteRendererParent: {fileID: 1451645887}
 --- !u!61 &1684270457
 BoxCollider2D:
