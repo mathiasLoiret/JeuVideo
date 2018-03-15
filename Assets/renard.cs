@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class renard : MonoBehaviour {
 
+    //public 
+
 	// Use this for initialization
 	void Start () {
 		

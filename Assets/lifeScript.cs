@@ -9,7 +9,6 @@ public class lifeScript : MonoBehaviour
 
     public SpriteRenderer activ;
     public SpriteRenderer unactiv;
-    public AudioClip winclip;
 
     public int max;
     public float actual;
@@ -39,6 +38,11 @@ public class lifeScript : MonoBehaviour
         return this.actual;
     }
 
+    internal int getMax()
+    {
+        return this.max;
+    }
+
     void updateActual()
     {
 
@@ -52,22 +56,6 @@ public class lifeScript : MonoBehaviour
 
         activ.transform.position = new Vector2(activ.transform.position.x - delta, activ.transform.position.y);
         activ.size = new Vector2(symbloleScale * actual, activ.size.y);
-
-        if (this.name == "Progress")
-            testVictory();
-    }
-
-    private void testVictory()
-    {
-        if (actual >= max)
-        {
-            // Debug.Log("victory");
-            GetComponent<Transform>().parent.parent.parent.GetComponent<gameManager>().victory();
-            GetComponent<AudioSource>().clip = winclip;
-            GetComponent<AudioSource>().Play();
-
-        }
-
     }
 
     void updateMax()
