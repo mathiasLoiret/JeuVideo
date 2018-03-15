@@ -13,8 +13,10 @@ public class gameManager : MonoBehaviour
 
     private Vector3 respownPosition;
 
-    private float deltaTime = 0.0f;
+    private float deltaTime = 1.0f;
     private float minTimeBetwinDamage = 1f;
+
+    private Transform player_tr;
 
     private int progressMax;
     public AudioSource hurt;
@@ -23,14 +25,20 @@ public class gameManager : MonoBehaviour
     void Start()
     {
         victoryPic.GetComponent<Renderer>().enabled = false;
-        respownPosition = GetComponent<Transform>().position;
+        respownPosition = GetComponent<Transform>().position + new Vector3(-3, 2, 0);
         progressMax = transform.Find("Player&Cam").Find("Main Camera").Find("Progress").GetComponent<lifeScript>().getMax();
+        player_tr = transform.Find("Player&Cam").Find("PlayerContainer").Find("Player").GetComponent<Transform>();
     }
 
     // Update is called once per frame
     void Update()
     {
         deltaTime += Time.deltaTime;
+        if (deltaTime < minTimeBetwinDamage)
+        {
+            player_tr.position = respownPosition;
+            player_tr.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
+        }
     }
 
     internal void victory()
@@ -63,9 +71,6 @@ public class gameManager : MonoBehaviour
             else
             {
                 transform.Find("Player&Cam").Find("CenterCam").GetComponent<CenterCam>().freez(0.5f);
-                Transform player_tr = transform.Find("Player&Cam").Find("PlayerContainer").Find("Player").GetComponent<Transform>();
-                player_tr.position = respownPosition + new Vector3(-3, 2, 0);
-                player_tr.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
                 transform.Find("Player&Cam").Find("PlayerContainer").Find("Player").Find("EnergieBar").GetComponent<lifeBarScript>().addLP(3f);
             }
             deltaTime = 0;
