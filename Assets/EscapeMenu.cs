@@ -35,11 +35,15 @@ public class EscapeMenu : MonoBehaviour {
 
 	}
 
-	public void GoToMenuPrincip(){
-		SceneManager.LoadScene("MenuPrincp");
+	public void GoToMenuPrincip()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("MenuPrincp");
 	} 	
 
-	public void RestartLevel(){
+	public void RestartLevel()
+    {
+        Time.timeScale = 1;
 		SceneManager.LoadScene(scene.name);
 	}
 }
