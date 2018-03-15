@@ -33,6 +33,7 @@ public class generateGraph : MonoBehaviour {
 	void Start () {
 		tr = GetComponent<Transform>();
 		chickenTr = chicken.GetComponent<Transform>();
+		chickenTr.position = new Vector3(chickenTr.position.x, chickenTr.position.y+0.5f, chickenTr.position.z) ;
 
         cellPosition = gridLayout.WorldToCell(tr.position);
         chickenPosition = gridLayout.WorldToCell(chickenTr.position);
@@ -41,6 +42,8 @@ public class generateGraph : MonoBehaviour {
         end = new Node(chickenPosition.x, chickenPosition.y);
         closeList = new List<Node>();
         openList = new List<Node>();
+
+		way = PathFindingGraph.Crawl(closeList, start, end, openList, start, floor.GetComponent<Tilemap>(), wall.GetComponent<Tilemap>(), stairs.GetComponent<Tilemap>());
 	}
 	
 	// Update is called once per frame
@@ -49,7 +52,7 @@ public class generateGraph : MonoBehaviour {
         if ((deltaTime > 1 / minFps) && (start != end))
         {
 			cellPosition = gridLayout.WorldToCell(tr.position);
-        	chickenPosition = gridLayout.WorldToCell(chickenTr.position);
+        	chickenPosition = gridLayout.WorldToCell(new Vector3(chickenTr.position.x, chickenTr.position.y+0.5f, chickenTr.position.z));
 
 			start = new Node(cellPosition.x, cellPosition.y);
 			end = new Node(chickenPosition.x, chickenPosition.y);
@@ -64,6 +67,7 @@ public class generateGraph : MonoBehaviour {
 
 			if(way.Count>0){
 				Node node = way[way.Count-1];
+				way.Remove(way[way.Count-1]);
 				Vector3Int pos = new Vector3Int((int)node.x, (int)node.y, 0);
 				Vector3Int worldPos = gridLayout.WorldToCell(pos);
 				tr.position = worldPos;
