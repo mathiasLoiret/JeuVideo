@@ -40,6 +40,7 @@ public class PathFindingGraph
         if(isBlocked(end.x, end.y, floorTilemap, wallTilemap, stairsTilemap)){
             return new List<Node>();
         }
+
         if(openList.Count > 0){
             openList.ForEach(delegate(Node openNode){
                 if(openNode.x == start.x && openNode.y == start.y){
@@ -134,7 +135,7 @@ public class PathFindingGraph
             return isBlock;
         }
         else{
-            vect3.x = (int)x;
+            vect3.x = (int)x-1;
             vect3.y = (int)y;
         }
         

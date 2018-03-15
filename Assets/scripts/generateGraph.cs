@@ -34,8 +34,6 @@ public class generateGraph : MonoBehaviour {
 		tr = GetComponent<Transform>();
 		chickenTr = chicken.GetComponent<Transform>();
 
-		// TileBase tile = floor.GetComponent<Tilemap>().GetTile(floor.GetComponent<Tilemap>().worldToCell());
-
         cellPosition = gridLayout.WorldToCell(tr.position);
         chickenPosition = gridLayout.WorldToCell(chickenTr.position);
 
@@ -67,7 +65,8 @@ public class generateGraph : MonoBehaviour {
 			if(way.Count>0){
 				Node node = way[way.Count-1];
 				Vector3Int pos = new Vector3Int((int)node.x, (int)node.y, 0);
-				tr.position = gridLayout.WorldToCell(pos);
+				Vector3Int worldPos = gridLayout.WorldToCell(pos);
+				tr.position = worldPos;
 			}
 			
 			deltaTime -= 1 / minFps;
