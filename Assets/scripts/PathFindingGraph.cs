@@ -15,12 +15,18 @@ public class Node: IEquatable<Node>
         this.h = 0f;
         this.c = 0f;
     }
+    
+    public Node(float X, float Y, float C)
+    {
+        this.x = X;
+        this.y = Y;
+        this.h = 0f;
+        this.c = C;
+    }
 
     public bool Equals( Node other )
     {
-        // Would still want to check for null etc. first.
-        return this.x == other.x && 
-               this.y == other.y;
+        return this.x == other.x && this.y == other.y;
     }
 }
 
@@ -43,40 +49,22 @@ public class PathFindingGraph
             });
         }
 
-        List<Node> nearNodes = new List<Node>();
-        Node NO = new Node(start.x - 1, start.y -1);
-        NO.c = 1.4f+start.c;
-        Node N = new Node(start.x, start.y - 1);
-        N.c = 1f+start.c;
-        Node NE = new Node(start.x + 1, start.y - 1);
-        NE.c = 1.4f+start.c;
-        Node E = new Node(start.x + 1, start.y);
-        E.c = 1f+start.c;
-        Node SE = new Node(start.x + 1, start.y + 1);
-        SE.c = 1.4f+start.c;
-        Node S = new Node(start.x, start.y + 1);
-        S.c = 1f+start.c;
-        Node SO = new Node(start.x - 1, start.y + 1);
-        SO.c = 1.4f+start.c;
-        Node O = new Node(start.x - 1, start.y);
-        O.c = 1f+start.c;
-        nearNodes.Add(NO);
-        nearNodes.Add(N);
-        nearNodes.Add(NE);
-        nearNodes.Add(E);
-        nearNodes.Add(SE);
-        nearNodes.Add(S);
-        nearNodes.Add(SO);
-        nearNodes.Add(O);
-
-        List<Node> tempNodes = new List<Node>();
+        List<Node> nearNodes = new List<Node>(){
+            new Node(start.x - 1, start.y -1, 1.4f+start.c),
+            new Node(start.x, start.y - 1, 1f+start.c),
+            new Node(start.x + 1, start.y - 1, 1.4f+start.c),
+            new Node(start.x + 1, start.y, 1f+start.c),
+            new Node(start.x + 1, start.y + 1, 1.4f+start.c),
+            new Node(start.x, start.y + 1, 1f+start.c),
+            new Node(start.x - 1, start.y + 1, 1.4f+start.c),
+            new Node(start.x - 1, start.y, 1f+start.c)
+        };
 
         nearNodes.ForEach(delegate(Node nearNode){
-
             if(nearNode.c != 99999 && isBlocked(nearNode.x, nearNode.y, floorTilemap, wallTilemap, stairsTilemap)){
                 nearNode.c = 99999;
             }
-            if(!closeList.Contains(nearNode) && !openList.Contains(nearNode) /*&& !isBlocked(nearNode.x, nearNode.y, floorTilemap, wallTilemap)*/){
+            if(!closeList.Contains(nearNode) && !openList.Contains(nearNode)){
                 nearNode.h = getHeuristic(nearNode, end);
                         
                 openList.Add(nearNode);
@@ -85,25 +73,10 @@ public class PathFindingGraph
         
         Node startNode = openList.OrderBy(node => node.c+node.h).ToList().First();
 
-        // Debug.Log("positions :");
-        // Debug.Log(startNode.x);
-        // Debug.Log(startNode.y);
-        // Debug.Log(startNode.h);
-        // Debug.Log(startNode.h+startNode.c);
-
         if(startNode.x == end.x && startNode.y == end.y){
             List<Node> result = new List<Node>();
-            // Debug.Log("end");
 
             List<Node> realEndNode = closeList.OrderBy(node => node.c+node.h).ToList();
-
-            // getWay(realEndNode, end, realStart, 0, result, floorTilemap, wallTilemap).ForEach(delegate(Node resultNode){
-                // Debug.Log("x y :");
-                // Debug.Log(resultNode.x);
-                // Debug.Log(resultNode.y);
-                // Debug.Log("c + h :");
-                // Debug.Log(resultNode.c + resultNode.h);
-            // });
 
             return getWay(realEndNode, end, realStart, 0, result, floorTilemap, wallTilemap, stairsTilemap);
         }
@@ -112,6 +85,7 @@ public class PathFindingGraph
         }
     }
 
+    //calculate the distance between two points
     public static float getHeuristic(Node start, Node end)
     {
         return Convert.ToSingle(Math.Sqrt(Math.Pow(end.x - start.x, 2)+Math.Pow(end.y - start.y, 2)));
@@ -119,30 +93,23 @@ public class PathFindingGraph
 
     public static List<Node> getWay(List<Node> closeList, Node end, Node start, int i, List<Node> result, Tilemap floorTilemap, Tilemap wallTilemap, Tilemap stairsTilemap)
     {
-        List<Node> nearNodes = new List<Node>();
-        Node NO = new Node(end.x - 1, end.y -1);
-        Node N = new Node(end.x, end.y - 1);
-        Node NE = new Node(end.x + 1, end.y - 1);
-        Node E = new Node(end.x + 1, end.y);
-        Node SE = new Node(end.x + 1, end.y + 1);
-        Node S = new Node(end.x, end.y + 1);
-        Node SO = new Node(end.x - 1, end.y + 1);
-        Node O = new Node(end.x - 1, end.y);
-        nearNodes.Add(NO);
-        nearNodes.Add(N);
-        nearNodes.Add(NE);
-        nearNodes.Add(E);
-        nearNodes.Add(SE);
-        nearNodes.Add(S);
-        nearNodes.Add(SO);
-        nearNodes.Add(O);
+        List<Node> nearNodes = new List<Node>(){
+            new Node(end.x - 1, end.y -1),
+            new Node(end.x, end.y - 1),
+            new Node(end.x + 1, end.y - 1),
+            new Node(end.x + 1, end.y),
+            new Node(end.x + 1, end.y + 1),
+            new Node(end.x, end.y + 1),
+            new Node(end.x - 1, end.y + 1),
+            new Node(end.x - 1, end.y)
+        };
 
-        if(nearNodes.Contains(start) || i == 100){
+        if(nearNodes.Contains(start)){
             return result;
         }
 
         nearNodes.ForEach(delegate(Node nearNode){
-            if(closeList.Contains(nearNode) /*&& !isBlocked(nearNode.x, nearNode.y, floorTilemap, wallTilemap)*/){
+            if(closeList.Contains(nearNode)){
                 int index = closeList.IndexOf(nearNode);
                 Node node = closeList[index];
                 closeList.Remove(node);
@@ -160,6 +127,7 @@ public class PathFindingGraph
         return getWay(closeList, result[i], start, i+1, result, floorTilemap, wallTilemap, stairsTilemap);        
     }
 
+    //check if the block in position x, y is floor wall or stairs
     public static bool isBlocked(float x, float y, Tilemap floorTilemap, Tilemap wallTilemap, Tilemap stairsTilemap)
     {
         if(vect3.x == x && vect3.y == y){
