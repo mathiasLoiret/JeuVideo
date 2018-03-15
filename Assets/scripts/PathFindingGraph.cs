@@ -135,7 +135,7 @@ public class PathFindingGraph
             return isBlock;
         }
         else{
-            vect3.x = (int)x-1;
+            vect3.x = (int)x;
             vect3.y = (int)y;
         }
         
