@@ -9,7 +9,7 @@ public class launch : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter) ){
+		if(Input.GetButton("Fire1") ){
 			SceneManager.LoadScene(sceneName);
 			
 		}
