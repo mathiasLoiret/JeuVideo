@@ -38,6 +38,7 @@ public class gameManager : MonoBehaviour
         victoryPic.GetComponent<Renderer>().enabled = true;
         GetComponent<AudioSource>().clip = winclip;
         GetComponent<AudioSource>().Play();
+        Time.timeScale = 0;
     }
 
     internal void hadCollected(string name, int v)
