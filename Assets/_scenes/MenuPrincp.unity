@@ -334,11 +334,37 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 16671787dd3373048a7e40214ad03fe9, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &676565781 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4282921529190062, guid: 9ab3d180afaad684aac8c25801d12841,
+    type: 2}
+  m_PrefabInternal: {fileID: 1481076602}
 --- !u!4 &700140389 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4883560282477108, guid: 16671787dd3373048a7e40214ad03fe9,
     type: 2}
   m_PrefabInternal: {fileID: 1286222783}
+--- !u!1 &779470301 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1464267220048968, guid: 9ab3d180afaad684aac8c25801d12841,
+    type: 2}
+  m_PrefabInternal: {fileID: 1481076602}
+--- !u!114 &779470304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 779470301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63c4da40e7aa60949a4e6159a659b6fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cibleTr: {fileID: 676565781}
+  percentToGoByFrame: 0
+  finalPrecision: 0
+  xOffset: 0
+  yOffset: 0
 --- !u!1 &797022545
 GameObject:
   m_ObjectHideFlags: 0
@@ -1175,6 +1201,16 @@ Prefab:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 82062011618523846, guid: 9ab3d180afaad684aac8c25801d12841,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114414055978077342, guid: 9ab3d180afaad684aac8c25801d12841,
+        type: 2}
+      propertyPath: percentToGoByFrame
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114373573950931334, guid: 9ab3d180afaad684aac8c25801d12841,
         type: 2}
       propertyPath: m_Enabled
       value: 0

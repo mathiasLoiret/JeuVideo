@@ -21,7 +21,7 @@ public class SpriteTuto : MonoBehaviour {
 		if(wait){
 			waitingFrame--;
 			if(waitingFrame ==0){
-				waitingFrame = 300;
+				waitingFrame = 10;
 				wait = false;
 			}
 		}else{
