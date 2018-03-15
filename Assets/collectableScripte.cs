@@ -38,11 +38,10 @@ public class collectableScripte : MonoBehaviour
 
         if (collision.tag == "Player")
         {
-            cc.enabled = false;
             tr.parent.parent.GetComponent<gameManager>().hadCollected(tr.parent.tag, 1);
             source.Play();
             i = Time.deltaTime;
-            //progress.GetComponent<lifeScript>().addHp(1f);
+            cc.enabled = false;
         }
     }
 
