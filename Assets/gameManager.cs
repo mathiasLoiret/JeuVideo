@@ -17,6 +17,7 @@ public class gameManager : MonoBehaviour
     private float minTimeBetwinDamage = 1f;
 
     private int progressMax;
+    public AudioSource hurt;
 
     // Use this for initialization
     void Start()
@@ -50,6 +51,7 @@ public class gameManager : MonoBehaviour
 
     internal void playerHaveBeenHurt(float v)
     {
+        hurt.Play();
         if (deltaTime > minTimeBetwinDamage)
         {
             if (transform.Find("Player&Cam").Find("Main Camera").Find("Life").GetComponent<lifeScript>().addHp(-1f) < 1)
