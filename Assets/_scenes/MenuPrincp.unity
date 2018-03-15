@@ -1174,7 +1174,13 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 82062011618523846, guid: 9ab3d180afaad684aac8c25801d12841,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 82808878725255174, guid: 9ab3d180afaad684aac8c25801d12841, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9ab3d180afaad684aac8c25801d12841, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1535916147 stripped
@@ -1676,7 +1682,7 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1918071171}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!124 &1918071173
 Behaviour:
   m_ObjectHideFlags: 0
