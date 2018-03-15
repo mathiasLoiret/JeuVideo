@@ -9,18 +9,21 @@ public class gameManager : MonoBehaviour
 
 
     public Transform victoryPic;
+    public AudioClip winclip;
 
     private Vector3 respownPosition;
 
     private float deltaTime = 0.0f;
     private float minTimeBetwinDamage = 1f;
 
+    private int progressMax;
+
     // Use this for initialization
     void Start()
     {
         victoryPic.GetComponent<Renderer>().enabled = false;
         respownPosition = GetComponent<Transform>().position;
-
+        progressMax = transform.Find("Player&Cam").Find("Main Camera").Find("Progress").GetComponent<lifeScript>().getMax();
     }
 
     // Update is called once per frame
@@ -32,11 +35,16 @@ public class gameManager : MonoBehaviour
     internal void victory()
     {
         victoryPic.GetComponent<Renderer>().enabled = true;
+        GetComponent<AudioSource>().clip = winclip;
+        GetComponent<AudioSource>().Play();
     }
 
     internal void hadCollected(string name, int v)
     {
-        transform.Find("Player&Cam").Find("Main Camera").Find("Progress").GetComponent<lifeScript>().addHp(1f);
+        if (transform.Find("Player&Cam").Find("Main Camera").Find("Progress").GetComponent<lifeScript>().addHp(1f) >= progressMax)
+        {
+            victory();
+        }
 
     }
 

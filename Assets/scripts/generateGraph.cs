@@ -60,16 +60,10 @@ public class generateGraph : MonoBehaviour {
 
 			testWay = PathFindingGraph.Crawl(closeList, start, end, openList, start, floor.GetComponent<Tilemap>(), wall.GetComponent<Tilemap>(), stairs.GetComponent<Tilemap>());
 
-			Debug.Log(start.x);
-			Debug.Log(start.y);
-			Debug.Log(end.x);
-			Debug.Log(end.x);
 			if(testWay.Count > 0){
 				way = testWay;
 			}
 
-			// PathFindingGraph.Crawl(closeList, start, end, openList, start, floor.GetComponent<Tilemap>(), wall.GetComponent<Tilemap>(), stairs.GetComponent<Tilemap>());		
-			
 			if(way.Count>0){
 				Node node = way[way.Count-1];
 				Vector3Int pos = new Vector3Int((int)node.x, (int)node.y, 0);
