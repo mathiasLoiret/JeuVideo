@@ -59,6 +59,7 @@ public class gameManager : MonoBehaviour
             }
             else
             {
+                transform.Find("Player&Cam").Find("CenterCam").GetComponent<CenterCam>().freez(0.5f);
                 Transform player_tr = transform.Find("Player&Cam").Find("PlayerContainer").Find("Player").GetComponent<Transform>();
                 player_tr.position = respownPosition + new Vector3(0, 2, 0);
                 player_tr.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
