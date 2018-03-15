@@ -22,6 +22,7 @@ public class movePlayer : MonoBehaviour
     private int jumpsCounter;
 
     private int collectableCounter;
+    private AudioSource SoundJump;
 
 
     // Use this for initialization
@@ -34,6 +35,8 @@ public class movePlayer : MonoBehaviour
 
         jumpsCounter = 0;
         collectableCounter = 0;
+
+        SoundJump = GetComponent<AudioSource>();
 
     }
 
@@ -82,6 +85,7 @@ public class movePlayer : MonoBehaviour
 
         if (jumpsCounter < maxConsecutivJumps)
         {
+            SoundJump.Play();
             if (jumpsCounter == 0)
             {
                 tr.parent.Find("envol_1").GetComponent<windPower>().go();
