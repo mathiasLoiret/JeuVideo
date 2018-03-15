@@ -120,6 +120,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4969051132320488}
   - component: {fileID: 114980603003773904}
+  - component: {fileID: 82062011618523846}
   m_Layer: 0
   m_Name: P.C.C.v2
   m_TagString: Untagged
@@ -223,6 +224,22 @@ GameObject:
   - component: {fileID: 114932490293721242}
   m_Layer: 0
   m_Name: plume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1464267220048968
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4227026671343526}
+  - component: {fileID: 114373573950931334}
+  m_Layer: 0
+  m_Name: beePosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -540,7 +557,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4920572846657444}
   - component: {fileID: 114995346322334432}
-  - component: {fileID: 82184184879567516}
   m_Layer: 0
   m_Name: Progress
   m_TagString: Untagged
@@ -604,7 +620,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4281040587091516}
   - component: {fileID: 212045275695414870}
-  - component: {fileID: 114583013496258342}
+  - component: {fileID: 114414055978077342}
   m_Layer: 0
   m_Name: bee
   m_TagString: Untagged
@@ -726,6 +742,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4966818491148680}
   m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4227026671343526
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1464267220048968}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2, y: 2.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4603883119980334}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4245046888324702
 Transform:
@@ -984,6 +1013,7 @@ Transform:
   - {fileID: 4282921529190062}
   - {fileID: 4433773083327508}
   - {fileID: 4281040587091516}
+  - {fileID: 4227026671343526}
   m_Father: {fileID: 4976935391128184}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1445,20 +1475,20 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1718177896271432}
   m_Enabled: 1
---- !u!82 &82116161959916216
+--- !u!82 &82062011618523846
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1279383501304856}
+  m_GameObject: {fileID: 1227043823376912}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 352e627c87df5bc41a9307b34f954809, type: 3}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 8300000, guid: 9ec43ebf861683944ab7cc405ae6658d, type: 3}
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1525,20 +1555,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!82 &82184184879567516
+--- !u!82 &82116161959916216
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1800116099948204}
+  m_GameObject: {fileID: 1279383501304856}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9ec43ebf861683944ab7cc405ae6658d, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 352e627c87df5bc41a9307b34f954809, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1730,6 +1760,39 @@ MonoBehaviour:
   - {fileID: 21300022, guid: 56c0ccf4fc711144d8d7a45f59bee540, type: 3}
   - {fileID: 21300022, guid: 56c0ccf4fc711144d8d7a45f59bee540, type: 3}
   maxFps: 10
+--- !u!114 &114373573950931334
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1464267220048968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b11d3d6a57557fa4fbec22a622e6e3af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floor: {fileID: 0}
+  wall: {fileID: 0}
+  stairs: {fileID: 0}
+  gridLayout: {fileID: 0}
+  chicken: {fileID: 1678949302250008}
+  minFps: 10
+--- !u!114 &114414055978077342
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1880713489786298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63c4da40e7aa60949a4e6159a659b6fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cibleTr: {fileID: 4227026671343526}
+  percentToGoByFrame: 0.1
+  finalPrecision: 0
+  xOffset: 0
+  yOffset: 0
 --- !u!114 &114436075183095048
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1756,23 +1819,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ps: {fileID: 198758593453007592}
   acc: 0
---- !u!114 &114583013496258342
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1880713489786298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b11d3d6a57557fa4fbec22a622e6e3af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  floor: {fileID: 0}
-  wall: {fileID: 0}
-  stairs: {fileID: 0}
-  gridLayout: {fileID: 0}
-  chicken: {fileID: 1678949302250008}
-  minFps: 10
 --- !u!114 &114587421999417934
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1799,7 +1845,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activ: {fileID: 212210160321445148}
   unactiv: {fileID: 212148826613358218}
-  winclip: {fileID: 0}
   max: 5
   actual: 5
   symbloleScale: 0.13
@@ -1945,6 +1990,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   victoryPic: {fileID: 4903793519307916}
+  winclip: {fileID: 8300000, guid: c5982a2ec38f89742849edfbf563af3d, type: 3}
 --- !u!114 &114995346322334432
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1958,7 +2004,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activ: {fileID: 212454636089893884}
   unactiv: {fileID: 212718305061782010}
-  winclip: {fileID: 8300000, guid: c5982a2ec38f89742849edfbf563af3d, type: 3}
   max: 10
   actual: 0
   symbloleScale: 0.45
