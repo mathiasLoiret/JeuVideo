@@ -62,7 +62,7 @@ public class windPower : MonoBehaviour {
         if (other.tag == "enemy")
         {
             other.GetComponent<Rigidbody2D>().velocity =
-                new Vector2((other.transform.position.x - this.transform.position.x) * power,
+                new Vector2(1/(other.transform.position.x - this.transform.position.x) *5 * power,
                             (other.transform.position.y - this.transform.position.y) * power);
         }
 
