@@ -8,7 +8,6 @@ public class chickenMove : MonoBehaviour {
     private SpriteRenderer sr;
     private Transform tr;
     private Rigidbody2D rb;
-    private BoxCollider2D bc;
 
     public float maxHorizontalSpeed;
     public float jumpInitialSpeed;
@@ -29,7 +28,6 @@ public class chickenMove : MonoBehaviour {
         tr = GetComponent<Transform>();
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
-        bc = GetComponent<BoxCollider2D>();
 
         jumpsCounter = 0;
         collectableCounter = 0;

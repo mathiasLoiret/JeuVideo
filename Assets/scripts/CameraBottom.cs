@@ -6,12 +6,10 @@ public class CameraBottom : MonoBehaviour {
 
 	public GameObject CenterCam;
 	public GameObject Player;
-	
-    private Vector3 offset;
 
     void Start ()
     {
-        offset = transform.position - CenterCam.transform.position;
+		
     }
     
     void LateUpdate (){
