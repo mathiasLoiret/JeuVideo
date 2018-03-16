@@ -9,7 +9,6 @@ public class collectableScripte : MonoBehaviour
     public AudioSource source;
     public GameObject pcc;
     public poolManager pool;
-    public string tag;
     private Transform tr;
     private CircleCollider2D cc;
 
@@ -27,7 +26,7 @@ public class collectableScripte : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (i > 0)
+        if (i > 0 && i < 1)
         {
             i += Time.deltaTime * 2;
             tr.position = initPosition + new Vector3(0, CustumEase(i)*2, 0);
