@@ -7,6 +7,9 @@ public class collectableScripte : MonoBehaviour
 
     public Transform progress;
     public AudioSource source;
+    public GameObject pcc;
+    public poolManager pool;
+    public string tag;
     private Transform tr;
     private CircleCollider2D cc;
 
@@ -31,7 +34,7 @@ public class collectableScripte : MonoBehaviour
         }
 
         if (i > 1 )
-            Destroy(this.gameObject);
+            pool.GiveBack(this.gameObject);
         
     }
 
@@ -41,7 +44,7 @@ public class collectableScripte : MonoBehaviour
         if (collision.tag == "Player")
         {
             cc.enabled = false;
-            tr.parent.parent.GetComponent<gameManager>().hadCollected(tr.parent.tag, 1);
+            pcc.GetComponent<gameManager>().hadCollected(tag, 1);
             source.Play();
             i = Time.deltaTime;
         }
