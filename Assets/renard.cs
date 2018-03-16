@@ -33,7 +33,7 @@ public class renard : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("renard-OnTriggerEnter2D-" + collision.transform.name);
+        //Debug.Log("renard-OnTriggerEnter2D-" + collision.transform.name);
         if (collision.transform.name == "danger")
         {
             Destroy(this.gameObject);
