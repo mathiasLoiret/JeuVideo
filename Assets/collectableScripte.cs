@@ -18,6 +18,7 @@ public class collectableScripte : MonoBehaviour
     {
         tr = GetComponent<Transform>();
         initPosition = tr.position;
+        cc = GetComponent<CircleCollider2D>();
     }
 
     // Update is called once per frame
@@ -26,13 +27,12 @@ public class collectableScripte : MonoBehaviour
         if (i > 0)
         {
             i += Time.deltaTime * 2;
-            tr.position = initPosition + new Vector3(0, CustumEase(i) * 2, 0);
+            tr.position = initPosition + new Vector3(0, CustumEase(i)*2, 0);
         }
-            
 
         if (i > 1 )
             Destroy(this.gameObject);
-
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -40,10 +40,10 @@ public class collectableScripte : MonoBehaviour
 
         if (collision.tag == "Player")
         {
+            cc.enabled = false;
             tr.parent.parent.GetComponent<gameManager>().hadCollected(tr.parent.tag, 1);
             source.Play();
             i = Time.deltaTime;
-            cc.enabled = false;
         }
     }
 
