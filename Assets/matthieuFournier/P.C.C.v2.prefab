@@ -1636,6 +1636,7 @@ MonoBehaviour:
   life: {fileID: 4250167792416282}
   progress: {fileID: 4920572846657444}
   player: {fileID: 4282921529190062}
+  bee: {fileID: 4227026671343526}
   centerCam: {fileID: 4870916250074452}
 --- !u!114 &114995346322334432
 MonoBehaviour:

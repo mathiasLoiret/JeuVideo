@@ -24,6 +24,7 @@ public class gameManager : MonoBehaviour
     public Transform life;
     public Transform progress;
     public Transform player;
+    public Transform bee;
     public Transform centerCam;
 
     // Use this for initialization
@@ -77,6 +78,7 @@ public class gameManager : MonoBehaviour
             {
                 centerCam.GetComponent<CenterCam>().freez(0.5f);
                 player.GetComponentInChildren<lifeBarScript>().addLP(3f);
+                bee.position = respownPosition + new Vector3(2, 2, 0);
             }
             deltaTime = 0;
         }
