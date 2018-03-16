@@ -1462,7 +1462,8 @@ MonoBehaviour:
   gridLayout: {fileID: 0}
   chicken: {fileID: 1678949302250008}
   collectables: {fileID: 1796275100036312}
-  featherPrefab: {fileID: 0}
+  featherPrefab: {fileID: 1997402845446186, guid: 4a1c1513cff734340a247994ed0bef0c,
+    type: 2}
   minFps: 10
   targetFeather: 0
 --- !u!114 &114414055978077342
