@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -27,6 +25,10 @@ public class gameManager : MonoBehaviour
     public Transform bee;
     public Transform centerCam;
 
+    private float nextLvlTime = 0f;
+    private float unscaledTime = 0;
+    private bool isWin = false;
+
     // Use this for initialization
     void Start()
     {
@@ -45,6 +47,14 @@ public class gameManager : MonoBehaviour
             player_tr.position = respownPosition;
             player_tr.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
         }
+
+        if (isWin && Time.unscaledTime > nextLvlTime)
+            goNextLvl();
+    }
+
+    private void goNextLvl()
+    {
+        Debug.Log("Go next Lvl");
     }
 
     internal void victory()
@@ -53,6 +63,8 @@ public class gameManager : MonoBehaviour
         GetComponent<AudioSource>().clip = winclip;
         GetComponent<AudioSource>().Play();
         Time.timeScale = 0;
+        isWin = true;
+        nextLvlTime = Time.unscaledTime + 5f;
     }
 
     internal void hadCollected(string name, int v)
