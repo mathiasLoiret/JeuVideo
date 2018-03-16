@@ -9,7 +9,6 @@ public class collectableScripte : MonoBehaviour
     public AudioSource source;
     public GameObject pcc;
     public poolManager pool;
-    public string tag;
     private Transform tr;
     private CircleCollider2D cc;
 
