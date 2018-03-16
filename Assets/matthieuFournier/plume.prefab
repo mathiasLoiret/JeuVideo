@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114551052899324652}
   m_Layer: 0
   m_Name: plume
-  m_TagString: Untagged
+  m_TagString: feather
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,6 +70,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   progress: {fileID: 0}
   source: {fileID: 0}
+  pcc: {fileID: 0}
+  pool: {fileID: 0}
+  tag: 
 --- !u!212 &212585581550875846
 SpriteRenderer:
   m_ObjectHideFlags: 1

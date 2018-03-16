@@ -10,6 +10,7 @@ public class collectableScripte : MonoBehaviour
     public GameObject pcc;
     public poolManager pool;
     public string tag;
+    public GameObject bee;
     private Transform tr;
     private CircleCollider2D cc;
 
@@ -34,7 +35,10 @@ public class collectableScripte : MonoBehaviour
         }
 
         if (i > 1 )
+        {
             pool.GiveBack(this.gameObject);
+            bee.GetComponent<generateGraph>().targetFeather = false;
+        }
         
     }
 

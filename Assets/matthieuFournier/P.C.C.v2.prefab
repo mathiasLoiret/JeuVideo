@@ -465,7 +465,6 @@ GameObject:
   - component: {fileID: 114414055978077342}
   - component: {fileID: 114759674177993780}
   - component: {fileID: 114308926209389346}
-  - component: {fileID: 114770766805934310}
   m_Layer: 0
   m_Name: bee
   m_TagString: Untagged
@@ -1388,6 +1387,7 @@ MonoBehaviour:
   progress: {fileID: 4920572846657444}
   audio: {fileID: 82116161959916216}
   pcc: {fileID: 1227043823376912}
+  bee: {fileID: 1464267220048968}
 --- !u!114 &114289763455310274
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1461,7 +1461,10 @@ MonoBehaviour:
   stairs: {fileID: 0}
   gridLayout: {fileID: 0}
   chicken: {fileID: 1678949302250008}
+  collectables: {fileID: 1796275100036312}
+  featherPrefab: {fileID: 0}
   minFps: 10
+  targetFeather: 0
 --- !u!114 &114414055978077342
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1560,17 +1563,6 @@ MonoBehaviour:
   finalPrecision: 0
   xOffset: 0
   yOffset: 0
---- !u!114 &114770766805934310
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1880713489786298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab09aac77ffb5214089fcbb60959b509, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114820894975658370
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -9,6 +9,7 @@ public class generateFeather : MonoBehaviour {
 	public Transform progress;
 	public AudioSource audio;
 	public GameObject pcc;
+	public GameObject bee;
 
 	// Use this for initialization
 	void Start () {
@@ -22,6 +23,7 @@ public class generateFeather : MonoBehaviour {
 			feather.GetComponent<collectableScripte>().pcc = pcc;
 			feather.GetComponent<collectableScripte>().tag = this.tag;
 			feather.GetComponent<collectableScripte>().pool = pool;
+			feather.GetComponent<collectableScripte>().bee = bee;
 
 		}
 	}
