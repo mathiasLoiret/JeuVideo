@@ -24,12 +24,14 @@ public class collectableScripte : MonoBehaviour
     void Update()
     {
         if (i > 0)
-            i += Time.deltaTime*2;
+        {
+            i += Time.deltaTime * 2;
+            tr.position = initPosition + new Vector3(0, CustumEase(i) * 2, 0);
+        }
+            
 
         if (i > 1 )
             Destroy(this.gameObject);
-
-        tr.position = initPosition + new Vector3(0, CustumEase(i)*2, 0);
 
     }
 
