@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class poolManager : MonoBehaviour {
+public class poolManager {
 		private List<GameObject> pool = new List<GameObject>();
 
 		public poolManager(GameObject go, int initObjectNumber)
 		{
 			for(int i = 0; i<initObjectNumber; i++){
-				pool.Add(Instantiate(go, Vector3.zero, Quaternion.identity));
+				pool.Add(MonoBehaviour.Instantiate(go, Vector3.zero, Quaternion.identity));
 			}
 		}
 
