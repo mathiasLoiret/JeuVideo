@@ -6,9 +6,9 @@ using UnityEngine.Tilemaps;
 public class ShowHideTiles : MonoBehaviour {
 	public GameObject tileMap;
 	// Use this for initialization
-	private Collider2D collider;
+
 	void Start () {
-		collider = GetComponent<Collider2D>();
+		
 	}
 
 	void Update()

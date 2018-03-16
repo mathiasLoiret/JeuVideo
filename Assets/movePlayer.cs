@@ -9,7 +9,6 @@ public class movePlayer : MonoBehaviour
     private SpriteRenderer sr;
     private Transform tr;
     private Rigidbody2D rb;
-    private BoxCollider2D bc;
 
     public float maxHorizontalSpeed;
     public float jumpInitialSpeed;
@@ -21,7 +20,6 @@ public class movePlayer : MonoBehaviour
 
     private int jumpsCounter;
 
-    private int collectableCounter;
     private AudioSource SoundJump;
 
 
@@ -31,10 +29,8 @@ public class movePlayer : MonoBehaviour
         tr = GetComponent<Transform>();
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
-        bc = GetComponent<BoxCollider2D>();
 
         jumpsCounter = 0;
-        collectableCounter = 0;
 
         SoundJump = GetComponent<AudioSource>();
 

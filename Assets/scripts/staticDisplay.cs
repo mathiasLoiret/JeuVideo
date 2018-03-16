@@ -18,7 +18,9 @@ public class staticDisplay : MonoBehaviour {
         {
             finalMessage.text = "";
         }
-        catch (Exception e) { }
+        catch (Exception e) { 
+            Debug.Log(e);
+        }
 
     }
 	
@@ -31,7 +33,9 @@ public class staticDisplay : MonoBehaviour {
             fps.text = "FPS : " + roundedFps;
 
         }
-        catch (Exception e) { }
+        catch (Exception e) { 
+            Debug.Log(e);
+        }
     }
 
     internal void updateFinal(string finalMessageTxt)
