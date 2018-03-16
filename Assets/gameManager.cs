@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -21,13 +19,23 @@ public class gameManager : MonoBehaviour
     private int progressMax;
     public AudioSource hurt;
 
+    public Transform life;
+    public Transform progress;
+    public Transform player;
+    public Transform bee;
+    public Transform centerCam;
+
+    private float nextLvlTime = 0f;
+    private float unscaledTime = 0;
+    private bool isWin = false;
+
     // Use this for initialization
     void Start()
     {
         victoryPic.GetComponent<Renderer>().enabled = false;
         respownPosition = GetComponent<Transform>().position + new Vector3(-3, 2, 0);
-        progressMax = transform.Find("Player&Cam").Find("Main Camera").Find("Progress").GetComponent<lifeScript>().getMax();
-        player_tr = transform.Find("Player&Cam").Find("PlayerContainer").Find("Player").GetComponent<Transform>();
+        progressMax = progress.GetComponent<lifeScript>().getMax();
+        player_tr = player.GetComponent<Transform>();
     }
 
     // Update is called once per frame
@@ -39,6 +47,14 @@ public class gameManager : MonoBehaviour
             player_tr.position = respownPosition;
             player_tr.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
         }
+
+        if (isWin && Time.unscaledTime > nextLvlTime)
+            goNextLvl();
+    }
+
+    private void goNextLvl()
+    {
+        Debug.Log("Go next Lvl");
     }
 
     internal void victory()
@@ -47,11 +63,13 @@ public class gameManager : MonoBehaviour
         GetComponent<AudioSource>().clip = winclip;
         GetComponent<AudioSource>().Play();
         Time.timeScale = 0;
+        isWin = true;
+        nextLvlTime = Time.unscaledTime + 5f;
     }
 
     internal void hadCollected(string name, int v)
     {
-        if (transform.Find("Player&Cam").Find("Main Camera").Find("Progress").GetComponent<lifeScript>().addHp(1f) >= progressMax)
+        if (progress.GetComponent<lifeScript>().addHp(1f) >= progressMax)
         {
             victory();
         }
@@ -63,15 +81,16 @@ public class gameManager : MonoBehaviour
         hurt.Play();
         if (deltaTime > minTimeBetwinDamage)
         {
-            if (transform.Find("Player&Cam").Find("Main Camera").Find("Life").GetComponent<lifeScript>().addHp(-1f) < 1)
+            if (life.GetComponent<lifeScript>().addHp(-1f) < 1)
             {
-                Debug.Log("you lose");
+                Debug.Log("You lose");
                 SceneManager.LoadScene("MenuPrincp", LoadSceneMode.Single);
             }
             else
             {
-                transform.Find("Player&Cam").Find("CenterCam").GetComponent<CenterCam>().freez(0.5f);
-                transform.Find("Player&Cam").Find("PlayerContainer").Find("Player").Find("EnergieBar").GetComponent<lifeBarScript>().addLP(3f);
+                centerCam.GetComponent<CenterCam>().freez(0.5f);
+                player.GetComponentInChildren<lifeBarScript>().addLP(3f);
+                bee.position = respownPosition + new Vector3(2, 2, 0);
             }
             deltaTime = 0;
         }

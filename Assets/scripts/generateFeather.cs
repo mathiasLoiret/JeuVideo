@@ -7,7 +7,7 @@ public class generateFeather : MonoBehaviour {
 	public GameObject go;
 	public List<Vector2> feathersPos;
 	public Transform progress;
-	public AudioSource audio;
+	public AudioSource collectSound;
 	public GameObject pcc;
 	public GameObject bee;
 
@@ -19,7 +19,7 @@ public class generateFeather : MonoBehaviour {
 			GameObject feather = pool.Get();
 			feather.transform.position = feathersPos[i];
 			feather.GetComponent<collectableScripte>().progress = progress;
-			feather.GetComponent<collectableScripte>().source = audio;
+			feather.GetComponent<collectableScripte>().source = collectSound;
 			feather.GetComponent<collectableScripte>().pcc = pcc;
 			feather.GetComponent<collectableScripte>().tag = this.tag;
 			feather.GetComponent<collectableScripte>().pool = pool;

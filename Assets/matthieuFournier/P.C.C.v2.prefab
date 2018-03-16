@@ -1385,7 +1385,7 @@ MonoBehaviour:
   - {x: -13.3, y: 12.1}
   - {x: 41.9, y: 15}
   progress: {fileID: 4920572846657444}
-  audio: {fileID: 82116161959916216}
+  collectSound: {fileID: 82116161959916216}
   pcc: {fileID: 1227043823376912}
   bee: {fileID: 1464267220048968}
 --- !u!114 &114289763455310274
@@ -1625,6 +1625,11 @@ MonoBehaviour:
   victoryPic: {fileID: 4903793519307916}
   winclip: {fileID: 8300000, guid: c5982a2ec38f89742849edfbf563af3d, type: 3}
   hurt: {fileID: 82970157027009992}
+  life: {fileID: 4250167792416282}
+  progress: {fileID: 4920572846657444}
+  player: {fileID: 4282921529190062}
+  bee: {fileID: 4227026671343526}
+  centerCam: {fileID: 4870916250074452}
 --- !u!114 &114995346322334432
 MonoBehaviour:
   m_ObjectHideFlags: 1
